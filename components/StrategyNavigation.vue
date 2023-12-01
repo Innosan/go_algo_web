@@ -32,8 +32,9 @@ const baseRoute = `/strategy/${route.params.id}`;
 <style scoped>
 a {
 	border-radius: 42px;
-	border: 1px solid #a4a4a4;
-	background: rgba(237, 67, 69, 0.4);
 	padding: 12px;
+	border: 1px solid #373737;
+	opacity: 0.7;
+	background: #262626;
 }
 </style>

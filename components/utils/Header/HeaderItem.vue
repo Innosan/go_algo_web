@@ -6,7 +6,7 @@ const props = defineProps({
 </script>
 
 <template>
-	<a :href="props.navigateTo">{{ props.title }}</a>
+	<NuxtLink :to="props.navigateTo">{{ props.title }}</NuxtLink>
 </template>
 
 <style scoped lang="scss">
