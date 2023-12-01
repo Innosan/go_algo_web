@@ -15,7 +15,9 @@ import { strategies } from "~/utils/strategies.js";
 		<StrategyCard
 			v-for="strategy in strategies"
 			:strategy="strategy"
-			v-on:click="navigateTo(`/strategy/${strategy.id}`)"
+			v-on:click="
+				navigateTo(`/strategy/${strategy.id}-${strategy.title}`)
+			"
 		/>
 	</div>
 </template>

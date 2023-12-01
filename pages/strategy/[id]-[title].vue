@@ -4,7 +4,6 @@ const route = useRoute();
 
 <template>
 	<StrategyNavigation />
-	<p>{{ route.params.id }}</p>
 	<NuxtPage />
 </template>
 
