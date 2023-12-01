@@ -1,0 +1,13 @@
+button {
+	border: 1px solid black;
+	border-radius: 8px;
+	padding: 10px;
+
+	opacity: .8;
+
+	transition: .3s;
+	&:hover {
+		opacity: 1;
+	}
+
+}
