@@ -1,12 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AppLogo from "~/components/AppLogo.vue";
+</script>
 
 <template>
-	<div class="flex flex-row gap-4 items-center">
-		<div class="flex flex-row font-black text-3xl logo">
-			<p class="text-red-600">GO</p>
-			<p>.ALGO.</p>
-			<p class="text-red-600">Neuro</p>
-		</div>
+	<header class="flex flex-row gap-4 items-center">
+		<AppLogo />
 		<nav>
 			<ul>
 				<li>
@@ -14,7 +12,7 @@
 				</li>
 			</ul>
 		</nav>
-	</div>
+	</header>
 </template>
 
 <style scoped></style>

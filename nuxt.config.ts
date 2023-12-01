@@ -2,7 +2,7 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 	css: [
 		"~/assets/css/main.css",
-		"~/assets/css/general.css",
+		"~/assets/css/general.scss",
 		"~/assets/css/special.css",
 		"~/assets/css/fonts.css",
 		"~/assets/css/navigation.css",

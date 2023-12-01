@@ -22,6 +22,7 @@ div:has(> h3) {
 	&:hover {
 		opacity: 1;
 		transform: translateY(-5px);
+		border: 1px solid #cc6b6b;
 	}
 }
 </style>

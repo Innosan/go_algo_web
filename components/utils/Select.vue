@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import {
 	Listbox,
 	ListboxButton,
@@ -6,18 +6,23 @@ import {
 	ListboxOption,
 } from "@headlessui/vue";
 
-const selectedTicker = ref(tickers[0]);
+const props = defineProps({
+	items: Array,
+	displayKey: String,
+});
+
+const selectedItem = ref(props.items[0]);
 </script>
 
 <template>
 	<div>
-		<Listbox v-model="selectedTicker">
+		<Listbox v-model="selectedItem">
 			<div class="relative mt-1">
 				<ListboxButton
 					class="relative w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
 				>
 					<span class="block truncate">{{
-						selectedTicker.title
+						selectedItem[displayKey]
 					}}</span>
 					<span
 						class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"
@@ -39,15 +44,15 @@ const selectedTicker = ref(tickers[0]);
 					>
 						<ListboxOption
 							v-slot="{ active, selected }"
-							v-for="ticker in tickers"
-							:key="ticker.id"
-							:value="ticker"
+							v-for="item in items"
+							:key="item.id"
+							:value="item"
 							as="template"
 						>
 							<li
 								:class="[
 									active
-										? 'transition bg-amber-100 text-amber-900'
+										? 'transition bg-red-100 text-red-900'
 										: 'text-gray-900',
 									'relative cursor-pointer p-4 select-none py-2',
 								]"
@@ -57,7 +62,7 @@ const selectedTicker = ref(tickers[0]);
 										selected ? 'font-bold' : 'font-normal',
 										'block truncate',
 									]"
-									>{{ ticker.title }}</span
+									>{{ item[displayKey] }}</span
 								>
 							</li>
 						</ListboxOption>
