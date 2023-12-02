@@ -20,9 +20,7 @@
 			</div>
 		</div>
 		<div>
-			<a class="general-link" href="https://goalgo.ru/" target="_blank"
-				>Страница хакатона</a
-			>
+			<IconedLink navigate-to="https://goalgo.ru/" />
 		</div>
 	</footer>
 </template>

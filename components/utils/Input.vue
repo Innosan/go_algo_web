@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const emit = defineEmits(["input"]);
-export const props = defineProps({
+const props = defineProps({
 	type: {
 		type: String,
 		default: "text",

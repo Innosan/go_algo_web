@@ -3,7 +3,7 @@ const route = useRoute();
 </script>
 
 <template>
-	<p>Обучение сети</p>
+	<PageHeading icon="ic_neural_network.svg" title="Обучение сети" />
 </template>
 
 <style scoped></style>

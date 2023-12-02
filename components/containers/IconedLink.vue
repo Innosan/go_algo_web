@@ -1,14 +1,17 @@
 <script setup lang="ts">
 const props = defineProps({
 	navigateTo: String,
-	icon: String,
 });
 </script>
 
 <template>
-	<div class="flex gap-3">
-		<img :src="'~assets/icons/ui/'" alt="" />
-		<a class="general-link" href="https://goalgo.ru/" target="_blank"
+	<div class="flex gap-3 items-center">
+		<img
+			class="opacity-70"
+			src="~assets/icons/ui/ic_link.svg"
+			alt="Link icon"
+		/>
+		<a class="general-link" :href="navigateTo" target="_blank"
 			>Страница хакатона</a
 		>
 	</div>

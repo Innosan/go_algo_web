@@ -4,7 +4,7 @@ export const developers = [
 		role: "AI & ML",
 	},
 	{
-		name: "Сергей",
+		name: "Сергей Ильин",
 		role: "AI & ML",
 	},
 	{
@@ -17,6 +17,6 @@ export const developers = [
 	},
 	{
 		name: "Михаил Фомин",
-		role: "front-end",
+		role: "front-end & design",
 	},
 ];

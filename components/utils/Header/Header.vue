@@ -1,14 +1,15 @@
-<script setup lang="ts">
-import AppLogo from "~/components/AppLogo.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
 	<header class="flex flex-row gap-4 items-center">
 		<AppLogo />
 		<nav>
-			<ul>
+			<ul class="flex gap-4 font-bold">
 				<li>
 					<HeaderItem navigate-to="/" title="Стратегии" />
+				</li>
+				<li>
+					<HeaderItem navigate-to="/about" title="О сервисе" />
 				</li>
 			</ul>
 		</nav>

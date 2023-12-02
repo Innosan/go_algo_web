@@ -6,6 +6,7 @@ export default defineNuxtConfig({
 		"~/assets/css/special.css",
 		"~/assets/css/fonts.css",
 		"~/assets/css/navigation.css",
+		"~/assets/css/animations.css",
 	],
 	postcss: {
 		plugins: {
