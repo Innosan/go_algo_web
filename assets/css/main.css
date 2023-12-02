@@ -7,10 +7,15 @@ html {
     margin: 0 auto;
 	padding-top: 40px;
 	user-select: none;
+	overflow-x: hidden;
 }
 
+/*
+ * Static bottom footer
+ */
 footer {
 	padding: 40px 10vw 40px 10vw;
+	margin: 10vh -10vw -10vh;
 }
 
 #__nuxt {
