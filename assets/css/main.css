@@ -15,7 +15,8 @@ html {
  */
 footer {
 	padding: 40px 10vw 40px 10vw;
-	margin: 50vh -10vw -10vh;
+	margin: 30% -10vw -10vh;
+	position: static;
 }
 
 #__nuxt {

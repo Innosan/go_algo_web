@@ -33,11 +33,11 @@
 <style scoped lang="scss">
 .card {
 	opacity: 0.7;
-	transition: 0.7s;
+	transition: 0.3s;
 
 	&:hover {
 		border: 1px solid #cc6b6b;
-		animation: scaleUpDown 0.3s ease-in-out forwards;
+		transform: translateY(-5px) scale(1.05);
 		opacity: 1;
 	}
 }

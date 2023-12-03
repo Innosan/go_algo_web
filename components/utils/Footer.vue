@@ -1,6 +1,6 @@
 <template>
 	<footer
-		class="flex flex-col gap-6 bg-black bg-opacity-90 text-white static bottom-0 left-0 right-0 shrink-0"
+		class="flex flex-col gap-6 bg-black bg-opacity-90 text-white bottom-0 left-0 right-0 shrink-0"
 	>
 		<AppLogo />
 		<div class="opacity-80">
