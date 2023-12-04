@@ -14,7 +14,7 @@
 			v-for="strategy in strategies"
 			:strategy="strategy"
 			v-on:click="
-				navigateTo(`/strategy/${strategy.id}-${strategy.title}`)
+				navigateTo(`/strategy/${strategy.id}-${strategy.title}/mark-up`)
 			"
 		/>
 	</div>

@@ -10,6 +10,14 @@ const props = defineProps({
 	title: String,
 	items: Array,
 	displayKey: String,
+	displayFullSizeKey: {
+		type: String,
+		default: null,
+	},
+	isFullSized: {
+		type: Boolean,
+		default: false,
+	},
 	description: {
 		type: String,
 		default: null,
@@ -31,7 +39,10 @@ const selectedItem = ref(props.items[0]);
 		<p v-if="description" class="opacity-60">{{ description }}</p>
 		<div class="flex gap-2 items-end">
 			<Listbox v-model="selectedItem">
-				<div class="relative mt-1">
+				<div
+					:class="isFullSized ? 'full-size' : ''"
+					class="relative mt-1"
+				>
 					<ListboxButton
 						class="relative w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
 					>
@@ -79,8 +90,14 @@ const selectedItem = ref(props.items[0]);
 												: 'font-normal',
 											'block truncate',
 										]"
-										>{{ item[displayKey] }}</span
-									>
+										>{{ item[displayKey] }}
+										<span
+											class="opacity-70"
+											v-if="isFullSized"
+										>
+											{{ item[displayFullSizeKey] }}
+										</span>
+									</span>
 								</li>
 							</ListboxOption>
 						</ListboxOptions>
@@ -95,5 +112,9 @@ const selectedItem = ref(props.items[0]);
 <style>
 .options {
 	z-index: 10000;
+}
+
+.full-size {
+	width: -webkit-fill-available;
 }
 </style>

@@ -25,23 +25,42 @@ export const timeframes = {
 		{
 			id: 1,
 			timeframe: "1m",
+			title: "1 минута",
 		},
 		{
 			id: 2,
-			timeframe: "5m",
+			timeframe: "10m",
+			title: "10 минут",
 		},
 		{
 			id: 3,
-			timeframe: "1D",
+			timeframe: "1h",
+			title: "1 час",
 		},
 		{
 			id: 4,
+			timeframe: "1D",
+			title: "1 день",
+		},
+		{
+			id: 5,
+			timeframe: "1W",
+			title: "1 неделя",
+		},
+		{
+			id: 6,
 			timeframe: "1M",
+			title: "1 месяц",
+		},
+		{
+			id: 7,
+			timeframe: "1Q",
+			title: "1 квартал",
 		},
 	],
 	description:
 		"Вы можете настроить временной промежуток между барами\n" +
-		"на графе (1 день, 5 минут и т.д.)",
+		"на графе (1 день, 10 минут и т.д.)",
 };
 
 export const markupParameters = {

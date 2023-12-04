@@ -1,24 +1,19 @@
 <script setup lang="ts">
 import { useParametersStore } from "~/stores/parametersStore";
-import type { Duration, Security } from "~/types";
+import type { Security } from "~/types";
 
 const securitiesStore = useParametersStore<Security>(
 	"securities",
 	"http://213.171.14.97:8080/api/v1/data/lists/securities",
 );
 
-const durationsStore = useParametersStore<Duration>(
-	"durations",
-	"http://213.171.14.97:8080/api/v1/data/lists/securities",
-);
-
 const securities = securitiesStore();
-const durations = durationsStore();
 
 const filteredSecurities = computed(() => {
 	return securities.data.map((item) => ({
 		guid: item.guid,
 		id: item.id,
+		companyName: item.secname,
 		// Add other keys as needed
 	}));
 });
@@ -31,6 +26,8 @@ const filteredSecurities = computed(() => {
 			title="Тикер"
 			:items="filteredSecurities"
 			:description="tickers.description"
+			:is-full-sized="true"
+			display-full-size-key="companyName"
 			display-key="guid"
 		/>
 		<Select
@@ -42,7 +39,7 @@ const filteredSecurities = computed(() => {
 		/>
 		<Select
 			title="Временная рамка"
-			:items="durations.data"
+			:items="timeframes.list"
 			:description="timeframes.description"
 			display-key="title"
 		/>

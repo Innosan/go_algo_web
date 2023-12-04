@@ -30,15 +30,3 @@ export type Security = {
 	settledate: string;
 	guid: string;
 };
-
-export type ShortSecurity = {};
-export type Duration = {
-	interval: number;
-	duration: number;
-	days: number;
-	title: string;
-	hint: string;
-	version: number;
-	id: number;
-	guid: string;
-};
