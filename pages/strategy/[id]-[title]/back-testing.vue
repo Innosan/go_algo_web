@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-	<PageHeading icon="ic_testing.svg" title="Бэк-тесты" />
+	<PageHeading icon="ui/ic_testing" title="Бэк-тесты" />
 </template>
 
 <style scoped></style>

@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-	<PageHeading icon="ic_signals.svg" title="Сигналы" />
+	<PageHeading icon="ui/ic_signals" title="Сигналы" />
 </template>
 
 <style scoped></style>
