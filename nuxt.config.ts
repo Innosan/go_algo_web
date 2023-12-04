@@ -7,6 +7,7 @@ export default defineNuxtConfig({
 		"~/assets/css/fonts.css",
 		"~/assets/css/navigation.css",
 		"~/assets/css/animations.css",
+		"~/assets/css/icons.css",
 	],
 	postcss: {
 		plugins: {
@@ -20,5 +21,5 @@ export default defineNuxtConfig({
 			pathPrefix: false,
 		},
 	],
-	modules: ["nuxt-headlessui"],
+	modules: ["nuxt-headlessui", "nuxt-icons"],
 });

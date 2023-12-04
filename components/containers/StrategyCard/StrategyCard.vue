@@ -7,8 +7,8 @@ const props = defineProps({
 <template>
 	<div class="flex flex-col gap-4 p-4 select-none cursor-pointer">
 		<h3>{{ strategy.title }}</h3>
-		<CardHeading :heading="strategy.ticker" icon="ic_ticker.svg" />
-		<CardHeading :heading="strategy.status" icon="ic_status.svg" />
+		<CardHeading :heading="strategy.ticker" icon="ui/ic_ticker" />
+		<CardHeading :heading="strategy.status" icon="ui/ic_status" />
 	</div>
 </template>
 

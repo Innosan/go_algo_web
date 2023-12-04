@@ -1,8 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-	<PageHeading icon="ic_dataset.svg" title="Генерация дата-сета" />
-	<div class="flex flex-col gap-7">
+	<PageHeading icon="ui/ic_dataset" title="Генерация дата-сета" />
+	<div class="flex flex-row flex-wrap gap-7">
 		<Select
 			title="Тикер"
 			:items="tickers.list"

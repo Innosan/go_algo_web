@@ -25,10 +25,10 @@ const selectedItem = ref(props.items[0]);
 
 <template>
 	<div
-		class="flex flex-col gap-4 border-2 hover:border-b-red-400 hover:-translate-y-1 transition-all rounded-2xl p-4"
+		class="flex flex-col justify-between gap-4 w-5/12 border-2 hover:border-b-red-400 hover:-translate-y-1 transition-all rounded-2xl p-4"
 	>
 		<p class="text-2xl font-bold">{{ title }}</p>
-		<Disclosure v-if="description" :disclosure-text="description" />
+		<p v-if="description" class="opacity-60">{{ description }}</p>
 		<div class="flex gap-2 items-end">
 			<Listbox v-model="selectedItem">
 				<div class="relative mt-1">
@@ -41,8 +41,9 @@ const selectedItem = ref(props.items[0]);
 						<span
 							class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"
 						>
-							<img
-								src="~assets/icons/ui/ic_select.svg"
+							<NuxtIcon
+								class="nuxt-icon-small"
+								name="ui/ic_select"
 								alt="Выбрать"
 							/>
 						</span>

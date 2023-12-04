@@ -4,7 +4,7 @@ import { strategies } from "~/utils/strategies.js";
 
 <template class="page_content">
 	<div class="flex flex-row gap-4">
-		<PageHeading title="Стратегии" icon="ic_strategies.svg" />
+		<PageHeading title="Стратегии" icon="ui/ic_strategies" />
 		<Dialog
 			heading="Добавить новую стратегию"
 			description=""

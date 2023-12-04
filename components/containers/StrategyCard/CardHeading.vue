@@ -7,7 +7,7 @@ const props = defineProps({
 
 <template>
 	<div class="flex flex-row opacity-70 items-center gap-2">
-		<img :src="`/_nuxt/assets/icons/ui/${icon}`" :alt="heading" />
+		<NuxtIcon :name="icon" :alt="heading" />
 		<p>{{ heading }}</p>
 	</div>
 </template>

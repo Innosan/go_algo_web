@@ -10,11 +10,7 @@ const props = defineProps({
 		:href="navigateTo"
 		target="_blank"
 	>
-		<img
-			class="opacity-70"
-			src="~assets/icons/ui/ic_link.svg"
-			alt="Link icon"
-		/>
+		<NuxtIcon class="opacity-70" name="ui/ic_link" alt="Link icon" />
 		<p>Страница хакатона</p>
 	</a>
 </template>

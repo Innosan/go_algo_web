@@ -1,29 +1,29 @@
 export const services = [
 	{
-		icon: "ic_strategies.svg",
+		icon: "ui/ic_strategies",
 		title: "Оценка потенциальной доходности",
 		description:
 			"Мы анализируем ваш потенциал в области торговли и инвестиций, чтобы помочь вам принимать обоснованные решения.",
 	},
 	{
-		icon: "ic_dataset.svg",
+		icon: "ui/ic_dataset",
 		title: "Генерация датасетов",
 		description:
 			"Мы подготавливаем датасеты для обучения моделей машинного обучения.",
 	},
 	{
-		icon: "ic_neural_network.svg",
+		icon: "ui/ic_neural_network",
 		title: "Обучение нейронных сетей",
 		description: "Мы обучаем нейронные сети для анализа финансовых данных.",
 	},
 	{
-		icon: "ic_strategies.svg",
+		icon: "ui/ic_strategies",
 		title: "Оценка доходности",
 		description:
 			"Мы оцениваем доходность наших нейронных сетей, чтобы убедиться в их эффективности.",
 	},
 	{
-		icon: "ic_signals.svg",
+		icon: "ui/ic_signals",
 		title: "Генерация сигналов",
 		description:
 			"Мы генерируем сигналы для покупки, удержания или продажи акций.",
