@@ -25,7 +25,7 @@ const selectedItem = ref(props.items[0]);
 
 <template>
 	<div
-		class="flex flex-col justify-between gap-4 w-5/12 border-2 hover:border-b-red-400 hover:-translate-y-1 transition-all rounded-2xl p-4"
+		class="flex flex-col justify-between gap-4 w-5/12 border-2 hover:border-b-red-400 transition-all rounded-2xl p-4"
 	>
 		<p class="text-2xl font-bold">{{ title }}</p>
 		<p v-if="description" class="opacity-60">{{ description }}</p>
@@ -55,7 +55,7 @@ const selectedItem = ref(props.items[0]);
 						leave-to-class="opacity-0"
 					>
 						<ListboxOptions
-							class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
+							class="absolute options mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
 						>
 							<ListboxOption
 								v-slot="{ active, selected }"
@@ -91,3 +91,9 @@ const selectedItem = ref(props.items[0]);
 		</div>
 	</div>
 </template>
+
+<style>
+.options {
+	z-index: 10000;
+}
+</style>

@@ -1,6 +1,6 @@
 export const developers = [
 	{
-		name: "Апполон Степанов",
+		name: "Аполлон Степанов",
 		role: "AI & ML",
 	},
 	{

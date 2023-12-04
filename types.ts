@@ -1,0 +1,44 @@
+export type Security = {
+	version: number;
+	id: number;
+	secid: string;
+	boardid: string;
+	shortname: string;
+	prevprice: number;
+	lotsize: number;
+	facevalue: number;
+	status: string;
+	boardname: string;
+	decimals: number;
+	secname: string;
+	remarks: string;
+	marketcode: string;
+	instrid: string;
+	sectorid: string;
+	minstep: number;
+	prevwaprice: number;
+	faceunit: string;
+	prevdate: string;
+	issuesize: number;
+	isin: string;
+	latname: string;
+	regnumber: string;
+	prevlegalcloseprice: number;
+	currencyid: string;
+	sectype: string;
+	listlevel: number;
+	settledate: string;
+	guid: string;
+};
+
+export type ShortSecurity = {};
+export type Duration = {
+	interval: number;
+	duration: number;
+	days: number;
+	title: string;
+	hint: string;
+	version: number;
+	id: number;
+	guid: string;
+};

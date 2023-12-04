@@ -3,9 +3,9 @@ import { defineStore } from "pinia";
 /*
  * Generic store for handling parameters fetch and storing.
  */
-export const useParametersStore = (storeID: string, apiEndpoint: string) => {
+export const useParametersStore = <T>(storeID: string, apiEndpoint: string) => {
 	return defineStore(storeID, () => {
-		const data = ref([]);
+		const data = ref<T[]>([]);
 		const isFetched = ref(false);
 
 		async function fetchData() {
