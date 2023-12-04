@@ -21,5 +21,5 @@ export default defineNuxtConfig({
 			pathPrefix: false,
 		},
 	],
-	modules: ["nuxt-headlessui", "nuxt-icons"],
+	modules: ["nuxt-headlessui", "nuxt-icons", "@pinia/nuxt"],
 });

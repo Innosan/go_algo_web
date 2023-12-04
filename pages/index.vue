@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import { strategies } from "~/utils/strategies.js";
-</script>
+<script setup lang="ts"></script>
 
 <template class="page_content">
 	<div class="flex flex-row gap-4">
