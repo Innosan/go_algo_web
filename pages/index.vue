@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import { strategies } from "~/utils/strategies.js";
-</script>
+<script setup lang="ts"></script>
 
 <template class="page_content">
 	<div class="flex flex-row gap-4">
@@ -16,7 +14,7 @@ import { strategies } from "~/utils/strategies.js";
 			v-for="strategy in strategies"
 			:strategy="strategy"
 			v-on:click="
-				navigateTo(`/strategy/${strategy.id}-${strategy.title}`)
+				navigateTo(`/strategy/${strategy.id}-${strategy.title}/mark-up`)
 			"
 		/>
 	</div>

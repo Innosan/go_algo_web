@@ -6,8 +6,6 @@ import {
 	ListboxOption,
 } from "@headlessui/vue";
 
-const emit = defineEmits(["select"]);
-
 const props = defineProps({
 	title: String,
 	items: Array,
@@ -30,15 +28,12 @@ const props = defineProps({
 	},
 });
 
+const selectedTickerStore = useSelectedTickerStore();
 const selectedItem = ref(props.items[0]);
 
 const handleSelect = () => {
-	emit("select", selectedItem.value);
+	selectedTickerStore.selectTicker(selectedItem.value);
 };
-
-onMounted(() => {
-	handleSelect();
-});
 </script>
 
 <template>
@@ -57,9 +52,14 @@ onMounted(() => {
 						class="relative w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
 					>
 						<span class="block truncate">
-							{{ selectedItem[displayKey] }}
+							{{ selectedTickerStore.ticker[displayKey] }}
 							<span class="opacity-70" v-if="isFullSized">
-								- {{ selectedItem[displayFullSizeKey] }}
+								-
+								{{
+									selectedTickerStore.ticker[
+										displayFullSizeKey
+									]
+								}}
 							</span>
 						</span>
 						<span
