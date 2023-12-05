@@ -3,7 +3,6 @@ import type { Security } from "~/types";
 
 export const useSecuritiesStore = defineStore("securities", () => {
 	const securities = ref<Security[]>([]);
-	const filteredSecurities = ref([]);
 
 	const isFetched = ref(false);
 	async function fetchSecurities() {
@@ -22,19 +21,9 @@ export const useSecuritiesStore = defineStore("securities", () => {
 		}
 	}
 
-	function filterSecurities() {
-		filteredSecurities.value = securities.value.map((item) => ({
-			id: item.guid,
-			guid: item.guid,
-			companyName: item.secname,
-		}));
-	}
-
 	return {
 		securities,
 		isFetched,
 		fetchSecurities,
-		filteredSecurities,
-		filterSecurities,
 	};
 });

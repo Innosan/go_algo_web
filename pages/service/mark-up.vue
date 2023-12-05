@@ -2,7 +2,7 @@
 import { useSecuritiesStore } from "~/stores/securitiesStore";
 
 const securitiesStore = useSecuritiesStore();
-securitiesStore.filterSecurities();
+const servicesStore = useServicesStore();
 const selectedTicker = useSelectedTickerStore();
 
 const {
@@ -15,45 +15,6 @@ const {
 	selectedEndDate,
 	selectedStartDate,
 } = useSelectHandlers();
-
-async function markUp() {
-	const { data: response } = await $fetch(
-		"http://213.171.14.97:8080/api/v1/conf/add",
-		{
-			headers: {
-				"Content-Type": "application/json",
-			},
-			method: "post",
-			body: {
-				version: 0,
-				service: "string",
-				task_id: 0,
-				scaler_path: "string",
-				neural_path: "string",
-				extr_bar_count: 0,
-				max_unmark: 0,
-				size_df: 0,
-				count_days: 0,
-				data_path: "string",
-				new_model_flag: true,
-				learning_rate: 0,
-				epochs: 0,
-				steps_per_epoch: 0,
-				validation_steps: 0,
-				id: 0,
-				guid: "string",
-				ticker: selectedTicker.ticker.guid,
-				timeframe: selectedTimeframe.value.timeframe,
-				count_points: selectedMarkUp.value.value,
-				start_date: selectedStartDate.value,
-				end_date: selectedEndDate.value,
-				respos_url: "localhost:8080",
-			},
-		},
-	);
-
-	console.log(response.value);
-}
 </script>
 
 <template>
@@ -61,11 +22,11 @@ async function markUp() {
 	<div class="flex flex-row flex-wrap gap-7">
 		<SelectTicker
 			title="Тикер"
-			:items="securitiesStore.filteredSecurities"
+			:items="securitiesStore.securities"
 			:description="tickers.description"
 			:is-full-sized="true"
-			display-full-size-key="companyName"
-			display-key="guid"
+			display-full-size-key="secname"
+			display-key="secid"
 		/>
 		<Select
 			title="Параметр разметки"
@@ -95,7 +56,19 @@ async function markUp() {
 			id="start_date"
 		/>
 	</div>
-	<button @click="markUp">Разметить</button>
+	<button
+		@click="
+			servicesStore.markUp({
+				ticker: selectedTicker.ticker.secid,
+				timeframe: selectedTimeframe.timeframe,
+				markup: selectedMarkUp.value,
+				startDate: selectedStartDate,
+				endDate: selectedEndDate,
+			})
+		"
+	>
+		Разметить
+	</button>
 </template>
 
 <style scoped></style>

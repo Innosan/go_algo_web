@@ -1,32 +1,30 @@
 <script setup lang="ts">
 const route = useRoute();
-const baseRoute = `/strategy/${route.params.id}-${route.params.title}`;
 </script>
 
 <template>
 	<nav
 		class="flex flex-col gap-8 bg-black bg-opacity-90 text-white p-6 rounded-2xl"
 	>
-		<h3 class="font-bold text-2xl">Стратегия {{ route.params.title }}</h3>
 		<ul class="flex flex-row gap-4">
-			<li><NuxtLink :to="baseRoute + '/mark-up'">Разметка</NuxtLink></li>
 			<li>
-				<NuxtLink :to="baseRoute + '/generate-dataset'"
+				<NuxtLink to="/service/mark-up">Разметка</NuxtLink>
+			</li>
+			<li>
+				<NuxtLink to="/service/generate-dataset"
 					>Генерация дата-сета
 				</NuxtLink>
 			</li>
 			<li>
-				<NuxtLink :to="baseRoute + '/neural-learning'"
+				<NuxtLink to="/service/neural-learning"
 					>Обучение сети
 				</NuxtLink>
 			</li>
 			<li>
-				<NuxtLink :to="baseRoute + '/back-testing'"
-					>Бек-тесты
-				</NuxtLink>
+				<NuxtLink to="/service/back-testing">Бек-тесты </NuxtLink>
 			</li>
 			<li>
-				<NuxtLink :to="baseRoute + '/signals'">Сигналы</NuxtLink>
+				<NuxtLink to="/service/signals">Сигналы</NuxtLink>
 			</li>
 		</ul>
 	</nav>

@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
 	devtools: { enabled: true },
+	// routeRules: {
+	// 	"/api/v1/**": { proxy: { to: "'http://213.171.14.97:8080/api/v1/**" } },
+	// },
 	css: [
 		"~/assets/css/main.css",
 		"~/assets/css/general.scss",

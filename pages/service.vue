@@ -1,8 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-	<StrategyNavigation />
+	<ServiceNavigation />
 	<NuxtPage />
 </template>
-
 <style scoped></style>
