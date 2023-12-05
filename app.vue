@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import { useParametersStore } from "~/stores/parametersStore";
-import type { Security } from "~/types";
+import { useSecuritiesStore } from "~/stores/securitiesStore";
 
-const securitiesStore = useParametersStore<Security>(
-	"securities",
-	"http://213.171.14.97:8080/api/v1/data/lists/securities",
-);
+const securities = useSecuritiesStore();
 
-const securities = securitiesStore();
-
-securities.fetchData();
+securities.fetchSecurities();
 </script>
 
 <template>

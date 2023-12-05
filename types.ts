@@ -30,3 +30,10 @@ export type Security = {
 	settledate: string;
 	guid: string;
 };
+
+enum serviceFilename {
+	MARK_UP = "data_markup.py",
+	DATASET_GENERATION = "data_gen.py",
+	BACK_TESTING = "calc_profit.py",
+	NEURAL_LEARNING = "edu_neural.py",
+}

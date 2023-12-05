@@ -1,22 +1,11 @@
 <script setup lang="ts">
-import { useParametersStore } from "~/stores/parametersStore";
-import type { Security } from "~/types";
+import { useSecuritiesStore } from "~/stores/securitiesStore";
 
-const securitiesStore = useParametersStore<Security>(
-	"securities",
-	"http://213.171.14.97:8080/api/v1/data/lists/securities",
-);
+const securitiesStore = useSecuritiesStore();
+securitiesStore.filterSecurities();
 
-const securities = securitiesStore();
-
-const filteredSecurities = computed(() => {
-	return securities.data.map((item) => ({
-		guid: item.guid,
-		id: item.id,
-		companyName: item.secname,
-		// Add other keys as needed
-	}));
-});
+const { onTickerSelect, onMarkUpSelect, onTimeframeSelect } =
+	useSelectHandlers();
 </script>
 
 <template>
@@ -24,7 +13,8 @@ const filteredSecurities = computed(() => {
 	<div class="flex flex-row flex-wrap gap-7">
 		<Select
 			title="Тикер"
-			:items="filteredSecurities"
+			:items="securitiesStore.filteredSecurities"
+			@select="onTickerSelect"
 			:description="tickers.description"
 			:is-full-sized="true"
 			display-full-size-key="companyName"
@@ -33,6 +23,7 @@ const filteredSecurities = computed(() => {
 		<Select
 			title="Параметр разметки"
 			:items="markupParameters.list"
+			@select="onMarkUpSelect"
 			:description="markupParameters.description"
 			units="шт."
 			display-key="value"
@@ -40,10 +31,12 @@ const filteredSecurities = computed(() => {
 		<Select
 			title="Временная рамка"
 			:items="timeframes.list"
+			@select="onTimeframeSelect"
 			:description="timeframes.description"
 			display-key="title"
 		/>
 	</div>
+	<button @click="">Разметить</button>
 </template>
 
 <style scoped></style>

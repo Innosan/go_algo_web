@@ -6,6 +6,8 @@ import {
 	ListboxOption,
 } from "@headlessui/vue";
 
+const emit = defineEmits(["select"]);
+
 const props = defineProps({
 	title: String,
 	items: Array,
@@ -29,6 +31,14 @@ const props = defineProps({
 });
 
 const selectedItem = ref(props.items[0]);
+
+const handleSelect = () => {
+	emit("select", selectedItem.value);
+};
+
+onMounted(() => {
+	handleSelect();
+});
 </script>
 
 <template>
@@ -38,7 +48,7 @@ const selectedItem = ref(props.items[0]);
 		<p class="text-2xl font-bold">{{ title }}</p>
 		<p v-if="description" class="opacity-60">{{ description }}</p>
 		<div class="flex gap-2 items-end">
-			<Listbox v-model="selectedItem">
+			<Listbox v-model="selectedItem" @update:modelValue="handleSelect">
 				<div
 					:class="isFullSized ? 'full-size' : ''"
 					class="relative mt-1"
@@ -46,9 +56,12 @@ const selectedItem = ref(props.items[0]);
 					<ListboxButton
 						class="relative w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
 					>
-						<span class="block truncate">{{
-							selectedItem[displayKey]
-						}}</span>
+						<span class="block truncate">
+							{{ selectedItem[displayKey] }}
+							<span class="opacity-70" v-if="isFullSized">
+								- {{ selectedItem[displayFullSizeKey] }}
+							</span>
+						</span>
 						<span
 							class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"
 						>
@@ -95,7 +108,7 @@ const selectedItem = ref(props.items[0]);
 											class="opacity-70"
 											v-if="isFullSized"
 										>
-											{{ item[displayFullSizeKey] }}
+											- {{ item[displayFullSizeKey] }}
 										</span>
 									</span>
 								</li>

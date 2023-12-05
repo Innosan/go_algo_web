@@ -1,13 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useSecuritiesStore } from "~/stores/securitiesStore";
+
+const securitiesStore = useSecuritiesStore();
+</script>
 
 <template>
 	<PageHeading icon="ui/ic_dataset" title="Генерация дата-сета" />
 	<div class="flex flex-row flex-wrap gap-7">
 		<Select
 			title="Тикер"
-			:items="tickers.list"
+			:items="securitiesStore.filteredSecurities"
 			:description="tickers.description"
-			display-key="title"
+			:is-full-sized="true"
+			display-full-size-key="companyName"
+			display-key="guid"
 		/>
 		<Select
 			title="Параметр разметки"
@@ -20,7 +26,7 @@
 			title="Временная рамка"
 			:items="timeframes.list"
 			:description="timeframes.description"
-			display-key="timeframe"
+			display-key="title"
 		/>
 		<Select
 			title="Количество баров"
