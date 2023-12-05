@@ -1,7 +1,7 @@
 export const useSelectedTickerStore = defineStore({
 	id: "selectedTicker",
 	state: () => ({
-		ticker: null,
+		ticker: {},
 	}),
 	actions: {
 		selectTicker(ticker) {

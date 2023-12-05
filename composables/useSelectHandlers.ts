@@ -1,12 +1,6 @@
 export default function useSelectHandlers() {
-	const selectedTicker = useTickerSelect();
 	const selectedMarkUp = ref(null);
 	const selectedTimeframe = ref(null);
-
-	const onTickerSelect = (selected) => {
-		selectedTicker.value = selected;
-		console.log(selectedTicker.value);
-	};
 
 	const onMarkUpSelect = (selected) => {
 		selectedMarkUp.value = selected;
@@ -19,10 +13,8 @@ export default function useSelectHandlers() {
 	};
 
 	return {
-		selectedTicker,
 		selectedMarkUp,
 		selectedTimeframe,
-		onTickerSelect,
 		onMarkUpSelect,
 		onTimeframeSelect,
 	};

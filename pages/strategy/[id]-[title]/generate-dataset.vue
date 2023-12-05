@@ -7,7 +7,7 @@ const securitiesStore = useSecuritiesStore();
 <template>
 	<PageHeading icon="ui/ic_dataset" title="Генерация дата-сета" />
 	<div class="flex flex-row flex-wrap gap-7">
-		<Select
+		<SelectTicker
 			title="Тикер"
 			:items="securitiesStore.filteredSecurities"
 			:description="tickers.description"
