@@ -13,16 +13,14 @@ const props = defineProps({
 		default: "Type something...",
 	},
 	id: {
-		type: Number,
+		type: String,
 	},
 });
 
 const value = ref("");
 
 const handleInput = () => {
-	emit("input", {
-		input: value,
-	});
+	emit("input", value.value);
 };
 </script>
 

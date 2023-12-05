@@ -5,8 +5,16 @@ const securitiesStore = useSecuritiesStore();
 securitiesStore.filterSecurities();
 const selectedTicker = useSelectedTickerStore();
 
-const { onMarkUpSelect, onTimeframeSelect, selectedTimeframe } =
-	useSelectHandlers();
+const {
+	onMarkUpSelect,
+	onTimeframeSelect,
+	onEndDateSelect,
+	onStartDateSelect,
+	selectedTimeframe,
+	selectedMarkUp,
+	selectedEndDate,
+	selectedStartDate,
+} = useSelectHandlers();
 
 async function markUp() {
 	const { data: response } = await $fetch(
@@ -15,16 +23,36 @@ async function markUp() {
 			headers: {
 				"Content-Type": "application/json",
 			},
-			method: "POST",
+			method: "post",
 			body: {
+				version: 0,
+				service: "string",
+				task_id: 0,
+				scaler_path: "string",
+				neural_path: "string",
+				extr_bar_count: 0,
+				max_unmark: 0,
+				size_df: 0,
+				count_days: 0,
+				data_path: "string",
+				new_model_flag: true,
+				learning_rate: 0,
+				epochs: 0,
+				steps_per_epoch: 0,
+				validation_steps: 0,
+				id: 0,
+				guid: "string",
 				ticker: selectedTicker.ticker.guid,
 				timeframe: selectedTimeframe.value.timeframe,
+				count_points: selectedMarkUp.value.value,
+				start_date: selectedStartDate.value,
+				end_date: selectedEndDate.value,
 				respos_url: "localhost:8080",
 			},
 		},
 	);
 
-	console.log(response);
+	console.log(response.value);
 }
 </script>
 
@@ -54,8 +82,18 @@ async function markUp() {
 			:description="timeframes.description"
 			display-key="title"
 		/>
-		<Input type="date" title="Разметить с" id="start_date" />
-		<Input type="date" title="Разметить по" id="start_date" />
+		<Input
+			type="date"
+			@input="onStartDateSelect"
+			title="Разметить с"
+			id="start_date"
+		/>
+		<Input
+			type="date"
+			@input="onEndDateSelect"
+			title="Разметить по"
+			id="start_date"
+		/>
 	</div>
 	<button @click="markUp">Разметить</button>
 </template>
