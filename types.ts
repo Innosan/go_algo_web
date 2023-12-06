@@ -4,7 +4,7 @@ export type Security = {
 	secname: string;
 };
 
-enum serviceFilename {
+export enum serviceFilename {
 	MARK_UP = "data_markup.py",
 	DATASET_GENERATION = "data_gen.py",
 	BACK_TESTING = "calc_profit.py",

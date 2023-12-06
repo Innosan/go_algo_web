@@ -53,7 +53,7 @@ const {
 			type="date"
 			@input="onEndDateSelect"
 			title="Разметить по"
-			id="start_date"
+			id="end_date"
 		/>
 	</div>
 	<button
