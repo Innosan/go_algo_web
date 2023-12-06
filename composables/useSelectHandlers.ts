@@ -6,22 +6,18 @@ export default function useSelectHandlers() {
 
 	const onMarkUpSelect = (selected) => {
 		selectedMarkUp.value = selected;
-		console.log(selectedMarkUp.value);
 	};
 
 	const onTimeframeSelect = (selected) => {
 		selectedTimeframe.value = selected;
-		console.log(selectedTimeframe.value);
 	};
 
 	const onStartDateSelect = (selected) => {
 		selectedStartDate.value = selected;
-		console.log(selectedStartDate.value);
 	};
 
 	const onEndDateSelect = (selected) => {
 		selectedEndDate.value = selected;
-		console.log(selectedEndDate.value);
 	};
 
 	return {

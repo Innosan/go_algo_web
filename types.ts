@@ -1,34 +1,7 @@
 export type Security = {
-	version: number;
-	id: number;
 	secid: string;
-	boardid: string;
 	shortname: string;
-	prevprice: number;
-	lotsize: number;
-	facevalue: number;
-	status: string;
-	boardname: string;
-	decimals: number;
 	secname: string;
-	remarks: string;
-	marketcode: string;
-	instrid: string;
-	sectorid: string;
-	minstep: number;
-	prevwaprice: number;
-	faceunit: string;
-	prevdate: string;
-	issuesize: number;
-	isin: string;
-	latname: string;
-	regnumber: string;
-	prevlegalcloseprice: number;
-	currencyid: string;
-	sectype: string;
-	listlevel: number;
-	settledate: string;
-	guid: string;
 };
 
 enum serviceFilename {

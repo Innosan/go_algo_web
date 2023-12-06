@@ -57,6 +57,11 @@ const {
 		/>
 	</div>
 	<button
+		:disabled="
+			!selectedStartDate ||
+			!selectedEndDate ||
+			!selectedTicker.ticker.secid
+		"
 		@click="
 			servicesStore.markUp({
 				ticker: selectedTicker.ticker.secid,

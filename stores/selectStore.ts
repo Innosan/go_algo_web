@@ -1,7 +1,9 @@
+import type { Security } from "~/types";
+
 export const useSelectedTickerStore = defineStore({
 	id: "selectedTicker",
 	state: () => ({
-		ticker: {},
+		ticker: <Security>{},
 	}),
 	actions: {
 		selectTicker(ticker) {

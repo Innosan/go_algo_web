@@ -1,13 +1,11 @@
 export const useServicesStore = defineStore("services", () => {
+	const runtimeConfig = useRuntimeConfig();
+
 	const markUpResponse = ref({});
 	async function markUp(config: Object) {
-		console.log(config);
-		const { data: response } = await useFetch(
-			"http://213.171.14.97:8080/api/v1/conf/add",
+		const { data: markResponse } = await useFetch(
+			runtimeConfig.public.apiRoot + "conf/add",
 			{
-				headers: {
-					"Content-Type": "application/json",
-				},
 				method: "post",
 				body: {
 					version: 0,
@@ -37,8 +35,8 @@ export const useServicesStore = defineStore("services", () => {
 			},
 		);
 
-		console.log(response);
-		markUpResponse.value = response;
+		console.log(markResponse);
+		markUpResponse.value = markResponse;
 	}
 
 	return {

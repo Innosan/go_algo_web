@@ -9,11 +9,11 @@ const securitiesStore = useSecuritiesStore();
 	<div class="flex flex-row flex-wrap gap-7">
 		<SelectTicker
 			title="Тикер"
-			:items="securitiesStore.filteredSecurities"
+			:items="securitiesStore.securities"
 			:description="tickers.description"
 			:is-full-sized="true"
-			display-full-size-key="companyName"
-			display-key="guid"
+			display-full-size-key="secname"
+			display-key="secid"
 		/>
 		<Select
 			title="Параметр разметки"
