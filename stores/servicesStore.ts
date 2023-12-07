@@ -74,7 +74,7 @@ export const useServicesStore = defineStore("services", () => {
 					max_unmark: config.maxUnmark,
 					size_df: config.datasetSize,
 					extr_bar_count: 10,
-					data_path: "app/data" + config.timeframe,
+					data_path: "app/data/" + config.timeframe,
 					respos_url: "localhost:8080",
 				},
 			},

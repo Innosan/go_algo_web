@@ -22,6 +22,10 @@ const value = ref("");
 const handleInput = () => {
 	emit("input", value.value);
 };
+
+onMounted(() => {
+	handleInput();
+});
 </script>
 
 <template>

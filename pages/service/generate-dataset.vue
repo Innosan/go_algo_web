@@ -5,20 +5,14 @@ const securitiesStore = useSecuritiesStore();
 const servicesStore = useServicesStore();
 
 const {
-	onMarkUpSelect,
-	onTimeframeSelect,
-	onEndDateSelect,
-	onStartDateSelect,
-	onDatasetSizeSelect,
-	onMaxUnmarkedBarsSelect,
-	onBarsSelect,
 	selectedTimeframe,
 	selectedMarkUp,
 	selectedEndDate,
 	selectedStartDate,
+	selectedBars,
 	selectedDatasetSize,
 	selectedMaxUnmarkedBars,
-	selectedBars,
+	onSelect,
 } = useSelectHandlers();
 </script>
 
@@ -28,7 +22,7 @@ const {
 		<Select
 			title="Параметр разметки"
 			:items="markupParameters.list"
-			@select="onMarkUpSelect"
+			@select="(selected) => onSelect('selectedMarkUp', selected)"
 			:description="markupParameters.description"
 			units="шт."
 			display-key="value"
@@ -36,14 +30,14 @@ const {
 		<Select
 			title="Временная рамка"
 			:items="timeframes.list"
-			@select="onTimeframeSelect"
+			@select="(selected) => onSelect('selectedTimeframe', selected)"
 			:description="timeframes.description"
 			display-key="title"
 		/>
 		<Select
 			title="Количество баров"
 			units="шт."
-			@select="onBarsSelect"
+			@select="(selected) => onSelect('selectedBars', selected)"
 			:items="bars.list"
 			:description="bars.description"
 			display-key="value"
@@ -51,14 +45,16 @@ const {
 		<Select
 			title="Размер дата-сета"
 			:items="maxDatasetSize"
-			@select="onDatasetSizeSelect"
+			@select="(selected) => onSelect('selectedDatasetSize', selected)"
 			units="гб."
 			display-key="value"
 		/>
 		<Select
 			title="Максимум неразмеченных баров волны"
 			:items="maxBars.list"
-			@select="onMaxUnmarkedBarsSelect"
+			@select="
+				(selected) => onSelect('selectedMaxUnmarkedBars', selected)
+			"
 			:description="maxBars.description"
 			units="%"
 			display-key="value"
@@ -66,13 +62,13 @@ const {
 
 		<Input
 			type="date"
-			@input="onStartDateSelect"
+			@input="(selected) => onSelect('selectedStartDate', selected)"
 			title="Разметить с"
 			id="start_date"
 		/>
 		<Input
 			type="date"
-			@input="onEndDateSelect"
+			@input="(selected) => onSelect('selectedEndDate', selected)"
 			title="Разметить по"
 			id="end_date"
 		/>
@@ -85,6 +81,7 @@ const {
 				markup: selectedMarkUp.value,
 				startDate: selectedStartDate,
 				endDate: selectedEndDate,
+				extrBarCount: selectedBars.value,
 				maxUnmark: selectedMaxUnmarkedBars.value,
 				datasetSize: selectedDatasetSize.value,
 			})

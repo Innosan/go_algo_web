@@ -147,6 +147,10 @@ export const maxDatasetSize = [
 
 export const epochs = [
 	{
+		id: 0,
+		value: 10,
+	},
+	{
 		id: 1,
 		value: 250,
 	},
@@ -157,5 +161,26 @@ export const epochs = [
 	{
 		id: 3,
 		value: 1000,
+	},
+];
+export const stepsPerEpoch = [
+	{
+		id: 1,
+		value: 128,
+	},
+	{
+		id: 2,
+		value: 256,
+	},
+];
+
+export const validationSteps = [
+	{
+		id: 1,
+		value: 128,
+	},
+	{
+		id: 2,
+		value: 256,
 	},
 ];

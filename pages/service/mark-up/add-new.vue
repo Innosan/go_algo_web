@@ -6,14 +6,11 @@ const servicesStore = useServicesStore();
 const selectedTicker = useSelectedTickerStore();
 
 const {
-	onMarkUpSelect,
-	onTimeframeSelect,
-	onEndDateSelect,
-	onStartDateSelect,
-	selectedTimeframe,
 	selectedMarkUp,
-	selectedEndDate,
+	selectedTimeframe,
 	selectedStartDate,
+	selectedEndDate,
+	onSelect,
 } = useSelectHandlers();
 </script>
 
@@ -31,7 +28,7 @@ const {
 		<Select
 			title="Параметр разметки"
 			:items="markupParameters.list"
-			@select="onMarkUpSelect"
+			@select="(selected) => onSelect('selectedMarkUp', selected)"
 			:description="markupParameters.description"
 			units="шт."
 			display-key="value"
@@ -39,19 +36,19 @@ const {
 		<Select
 			title="Временная рамка"
 			:items="timeframes.list"
-			@select="onTimeframeSelect"
+			@select="(selected) => onSelect('selectedTimeframe', selected)"
 			:description="timeframes.description"
 			display-key="title"
 		/>
 		<Input
 			type="date"
-			@input="onStartDateSelect"
+			@input="(selected) => onSelect('selectedStartDate', selected)"
 			title="Разметить с"
 			id="start_date"
 		/>
 		<Input
 			type="date"
-			@input="onEndDateSelect"
+			@input="(selected) => onSelect('selectedEndDate', selected)"
 			title="Разметить по"
 			id="end_date"
 		/>
