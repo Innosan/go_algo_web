@@ -63,6 +63,16 @@ export const timeframes = {
 		"на графе (1 день, 10 минут и т.д.)",
 };
 
+export const timeframeMapping = {
+	"1m": { title: "minute", value: 1 },
+	"10m": { title: "minute", value: 10 },
+	"1h": { title: "hour", value: 1 },
+	"1D": { title: "day", value: 1 },
+	"1W": { title: "week", value: 1 },
+	"1M": { title: "month", value: 1 },
+	"1Q": { title: "quarter", value: 1 },
+};
+
 export const markupParameters = {
 	list: [
 		{
@@ -137,6 +147,10 @@ export const maxDatasetSize = [
 
 export const epochs = [
 	{
+		id: 0,
+		value: 10,
+	},
+	{
 		id: 1,
 		value: 250,
 	},
@@ -147,5 +161,26 @@ export const epochs = [
 	{
 		id: 3,
 		value: 1000,
+	},
+];
+export const stepsPerEpoch = [
+	{
+		id: 1,
+		value: 128,
+	},
+	{
+		id: 2,
+		value: 256,
+	},
+];
+
+export const validationSteps = [
+	{
+		id: 1,
+		value: 128,
+	},
+	{
+		id: 2,
+		value: 256,
 	},
 ];

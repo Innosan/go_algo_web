@@ -1,21 +1,27 @@
 export default function useSelectHandlers() {
-	const selectedMarkUp = ref(null);
-	const selectedTimeframe = ref(null);
+	const state = reactive({
+		selectedMarkUp: null,
+		selectedTimeframe: null,
+		selectedStartDate: null,
+		selectedEndDate: null,
+		selectedBars: null,
+		selectedDatasetSize: null,
+		selectedMaxUnmarkedBars: null,
+		selectedEpochs: null,
+		selectedStepsPerEpoch: null,
+		selectedValidationSteps: null,
+		selectedNewModelFlag: true,
+		selectedLearningRate: null,
+		selectedDataSet: null,
+	});
 
-	const onMarkUpSelect = (selected) => {
-		selectedMarkUp.value = selected;
-		console.log(selectedMarkUp.value);
-	};
-
-	const onTimeframeSelect = (selected) => {
-		selectedTimeframe.value = selected;
-		console.log(selectedTimeframe.value);
+	const onSelect = (key, selected) => {
+		state[key] = selected;
+		console.log(state[key]);
 	};
 
 	return {
-		selectedMarkUp,
-		selectedTimeframe,
-		onMarkUpSelect,
-		onTimeframeSelect,
+		...toRefs(state),
+		onSelect,
 	};
 }

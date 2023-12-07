@@ -11,6 +11,9 @@
 				<li>
 					<HeaderItem navigate-to="/about" title="О сервисе" />
 				</li>
+				<li>
+					<HeaderItem navigate-to="/service" title="Сервисы" />
+				</li>
 			</ul>
 		</nav>
 	</header>

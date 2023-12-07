@@ -13,17 +13,19 @@ const props = defineProps({
 		default: "Type something...",
 	},
 	id: {
-		type: Number,
+		type: String,
 	},
 });
 
 const value = ref("");
 
 const handleInput = () => {
-	emit("input", {
-		input: value,
-	});
+	emit("input", value.value);
 };
+
+onMounted(() => {
+	handleInput();
+});
 </script>
 
 <template>
@@ -35,7 +37,7 @@ const handleInput = () => {
 			:type="type"
 			:placeholder="placeholder"
 			:id="id"
-			class="p-2 border-b-2 w-1/2 rounded-xl"
+			class="p-2 border-b-2 w-1/2 rounded-xl w-fit"
 		/>
 	</div>
 </template>
