@@ -18,7 +18,7 @@ const {
 </script>
 
 <template>
-	<PageHeading icon="ui/ic_markup" title="Разметка" />
+	<PageHeading icon="ui/ic_add" title="Добавить новую разметку" />
 	<div class="flex flex-row flex-wrap gap-7">
 		<SelectTicker
 			title="Тикер"
