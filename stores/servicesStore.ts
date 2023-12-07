@@ -7,25 +7,24 @@ export const useServicesStore = defineStore("services", () => {
 	const taskResponse = ref({});
 	const datasetConfig = ref({});
 
-	async function createMarkUpTask(config: Object) {
-		const { data: markResponse } = await useFetch(
+	async function createTask(
+		service: string,
+		config: object,
+		successfulMessage: string,
+	) {
+		const { data: configResponse } = await useFetch(
 			runtimeConfig.public.apiRoot + "conf/add",
 			{
 				method: "post",
 				body: {
-					service: serviceFilename.MARK_UP,
-					ticker: config.ticker,
-					timeframe: config.timeframe,
-					count_points: config.markup,
-					start_date: config.startDate,
-					end_date: config.endDate,
+					service: service,
+					...config,
 					respos_url: "localhost:8080",
 				},
 			},
 		);
 
-		console.log("Created config: ", markResponse);
-		markUpResponse.value = markResponse;
+		console.log("Created config: ", configResponse);
 
 		const { data: taskResponse } = await useFetch(
 			runtimeConfig.public.apiRoot + "task/add",
@@ -33,7 +32,7 @@ export const useServicesStore = defineStore("services", () => {
 
 		console.log("Added task response: ", taskResponse);
 		console.log("taskResponse id:", taskResponse.value.id);
-		console.log("markResponse id:", markResponse.value.id);
+		console.log("configResponse id:", configResponse.value.id);
 
 		const { data: taskCreateResponse } = await useFetch(
 			runtimeConfig.public.apiRoot + "task/setConfig",
@@ -45,22 +44,34 @@ export const useServicesStore = defineStore("services", () => {
 				},
 				params: {
 					task_id: taskResponse.value.id,
-					conf_id: markResponse.value.id,
+					conf_id: configResponse.value.id,
 				},
 			},
 		);
 
 		console.log("Set task config response:", taskCreateResponse);
 
-		useNuxtApp().$toast.info("Добавление разметки успешно!");
+		useNuxtApp().$toast.info(successfulMessage);
 		useTasksStore().getAllTasks();
-
-		setTimeout(() => {
-			navigateTo("/service/mark-up");
-		}, 1000);
 	}
 
-	async function createGenDatasetTask(config: Object) {
+	async function createMarkUpTask(config: object) {
+		await createTask(
+			serviceFilename.MARK_UP,
+			config,
+			"Добавление разметки успешно!",
+		);
+	}
+
+	async function createGenDatasetTask(config: object) {
+		await createTask(
+			serviceFilename.DATASET_GENERATION,
+			config,
+			"Добавление датасета успешно!",
+		);
+	}
+
+	async function createNeuralLearningTask(config: Object) {
 		const { data: configResponse } = await useFetch(
 			runtimeConfig.public.apiRoot + "conf/add",
 			{
@@ -115,7 +126,8 @@ export const useServicesStore = defineStore("services", () => {
 	return {
 		markUpResponse,
 		taskResponse,
-		markUp: createMarkUpTask,
+		createTask,
+		createMarkUpTask,
 		createGenDatasetTask,
 	};
 });

@@ -78,12 +78,13 @@ const {
 		@click="
 			servicesStore.createGenDatasetTask({
 				timeframe: selectedTimeframe.timeframe,
-				markup: selectedMarkUp.value,
-				startDate: selectedStartDate,
-				endDate: selectedEndDate,
-				extrBarCount: selectedBars.value,
-				maxUnmark: selectedMaxUnmarkedBars.value,
-				datasetSize: selectedDatasetSize.value,
+				count_points: selectedMarkUp.value,
+				start_date: selectedStartDate,
+				end_date: selectedEndDate,
+				extr_bar_count: selectedBars.value,
+				max_unmark: selectedMaxUnmarkedBars.value,
+				data_path: 'app/data/' + selectedTimeframe.timeframe,
+				size_df: selectedDatasetSize.value,
 			})
 		"
 	>

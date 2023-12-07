@@ -10,6 +10,7 @@ const {
 	selectedTimeframe,
 	selectedStartDate,
 	selectedEndDate,
+	selectedBars,
 	onSelect,
 } = useSelectHandlers();
 </script>
@@ -40,6 +41,14 @@ const {
 			:description="timeframes.description"
 			display-key="title"
 		/>
+		<Select
+			title="Количество баров"
+			units="шт."
+			@select="(selected) => onSelect('selectedBars', selected)"
+			:items="bars.list"
+			:description="bars.description"
+			display-key="value"
+		/>
 		<Input
 			type="date"
 			@input="(selected) => onSelect('selectedStartDate', selected)"
@@ -61,12 +70,13 @@ const {
 			!selectedTicker.ticker.secid
 		"
 		@click="
-			servicesStore.markUp({
+			servicesStore.createMarkUpTask({
 				ticker: selectedTicker.ticker.secid,
 				timeframe: selectedTimeframe.timeframe,
 				markup: selectedMarkUp.value,
-				startDate: selectedStartDate,
-				endDate: selectedEndDate,
+				extr_bar_count: selectedBars.value,
+				start_date: selectedStartDate,
+				end_date: selectedEndDate,
 			})
 		"
 	>

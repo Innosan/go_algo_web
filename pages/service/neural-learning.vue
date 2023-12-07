@@ -49,6 +49,20 @@ const {
 			id="new_model_flag"
 		/>
 	</div>
+	<button
+		class="text-white"
+		@click="
+			servicesStore.markUp({
+				ticker: selectedTicker.ticker.secid,
+				timeframe: selectedTimeframe.timeframe,
+				markup: selectedMarkUp.value,
+				startDate: selectedStartDate,
+				endDate: selectedEndDate,
+			})
+		"
+	>
+		Разметить
+	</button>
 </template>
 
 <style scoped></style>
