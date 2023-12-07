@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import { serviceFilename } from "~/types";
+
 const {
 	selectedEpochs,
 	selectedValidationSteps,
 	selectedStepsPerEpoch,
+	selectedTimeframe,
 	selectedLearningRate,
 	selectedNewModelFlag,
+	selectedDataSet,
 	onSelect,
 } = useSelectHandlers();
+
+const servicesStore = useServicesStore();
+const tasksStore = useTasksStore();
 </script>
 
 <template>
@@ -27,6 +34,13 @@ const {
 			display-key="value"
 		/>
 		<Select
+			title="Временная рамка"
+			:items="timeframes.list"
+			@select="(selected) => onSelect('selectedTimeframe', selected)"
+			:description="timeframes.description"
+			display-key="title"
+		/>
+		<Select
 			title="Валидационные шаги"
 			:items="validationSteps"
 			@select="
@@ -34,6 +48,16 @@ const {
 			"
 			units="шт."
 			display-key="value"
+		/>
+		<Select
+			title="Дата-сет"
+			:items="
+				tasksStore.getTasksByService(serviceFilename.DATASET_GENERATION)
+			"
+			@select="(selected) => onSelect('selectedDataSet', selected)"
+			display-key="id"
+			:is-full-sized="true"
+			display-full-size-key="config"
 		/>
 		<Input
 			type="number"
@@ -52,16 +76,17 @@ const {
 	<button
 		class="text-white"
 		@click="
-			servicesStore.markUp({
-				ticker: selectedTicker.ticker.secid,
-				timeframe: selectedTimeframe.timeframe,
-				markup: selectedMarkUp.value,
-				startDate: selectedStartDate,
-				endDate: selectedEndDate,
+			servicesStore.createNeuralLearningTask({
+				data_path: selectedDataSet.config.data_path,
+				new_model_flag: !selectedNewModelFlag,
+				learning_rate: selectedLearningRate,
+				epochs: selectedEpochs.value,
+				steps_per_epoch: selectedStepsPerEpoch.value,
+				validation_steps: selectedValidationSteps.value,
 			})
 		"
 	>
-		Разметить
+		Обучить сеть
 	</button>
 </template>
 

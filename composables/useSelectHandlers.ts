@@ -12,6 +12,7 @@ export default function useSelectHandlers() {
 		selectedValidationSteps: null,
 		selectedNewModelFlag: true,
 		selectedLearningRate: null,
+		selectedDataSet: null,
 	});
 
 	const onSelect = (key, selected) => {

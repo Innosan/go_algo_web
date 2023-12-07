@@ -1,4 +1,6 @@
 import { serviceFilename } from "~/types";
+import { SymbolKind } from "vscode-languageserver-types";
+import Object = SymbolKind.Object;
 
 export const useServicesStore = defineStore("services", () => {
 	const runtimeConfig = useRuntimeConfig();
@@ -12,23 +14,33 @@ export const useServicesStore = defineStore("services", () => {
 		config: object,
 		successfulMessage: string,
 	) {
+		const { data: taskResponse } = await useFetch(
+			runtimeConfig.public.apiRoot + "task/add",
+		);
+
+		let dataGenConfig = config;
+		if (service === serviceFilename.DATASET_GENERATION) {
+			dataGenConfig.data_path = "app/data/" + taskResponse.value.id;
+		}
+
+		if (service === serviceFilename.NEURAL_LEARNING) {
+			dataGenConfig.neural_path = "app/neurals/" + taskResponse.value.id;
+			dataGenConfig.scaler_path = "app/scalers/" + taskResponse.value.id;
+		}
+
 		const { data: configResponse } = await useFetch(
 			runtimeConfig.public.apiRoot + "conf/add",
 			{
 				method: "post",
 				body: {
 					service: service,
-					...config,
+					...dataGenConfig,
 					respos_url: "localhost:8080",
 				},
 			},
 		);
 
 		console.log("Created config: ", configResponse);
-
-		const { data: taskResponse } = await useFetch(
-			runtimeConfig.public.apiRoot + "task/add",
-		);
 
 		console.log("Added task response: ", taskResponse);
 		console.log("taskResponse id:", taskResponse.value.id);
@@ -64,6 +76,8 @@ export const useServicesStore = defineStore("services", () => {
 	}
 
 	async function createGenDatasetTask(config: object) {
+		console.log(config);
+
 		await createTask(
 			serviceFilename.DATASET_GENERATION,
 			config,
@@ -71,56 +85,12 @@ export const useServicesStore = defineStore("services", () => {
 		);
 	}
 
-	async function createNeuralLearningTask(config: Object) {
-		const { data: configResponse } = await useFetch(
-			runtimeConfig.public.apiRoot + "conf/add",
-			{
-				method: "post",
-				body: {
-					service: serviceFilename.DATASET_GENERATION,
-					timeframe: config.timeframe,
-					count_points: config.markup,
-					start_date: config.startDate,
-					end_date: config.endDate,
-					max_unmark: config.maxUnmark,
-					size_df: config.datasetSize,
-					extr_bar_count: 10,
-					data_path: "app/data/" + config.timeframe,
-					respos_url: "localhost:8080",
-				},
-			},
+	async function createNeuralLearningTask(config: object) {
+		await createTask(
+			serviceFilename.NEURAL_LEARNING,
+			config,
+			"Обучение нейросети началось!",
 		);
-
-		console.log("Created config: ", configResponse);
-		datasetConfig.value = configResponse;
-
-		const { data: newTaskResponse } = await useFetch(
-			runtimeConfig.public.apiRoot + "task/add",
-		);
-
-		console.log("Added task response: ", newTaskResponse);
-		console.log("taskResponse id:", newTaskResponse.value.id);
-		console.log("markResponse id:", configResponse.value.id);
-
-		const { data: taskCreateResponse } = await useFetch(
-			runtimeConfig.public.apiRoot + "task/setConfig",
-			{
-				method: "get",
-				headers: {
-					Authentication:
-						"Basic cXdlcnR5QGdtaWFsLmNvbTpxd2VydHkxMjM=",
-				},
-				params: {
-					task_id: newTaskResponse.value.id,
-					conf_id: configResponse.value.id,
-				},
-			},
-		);
-
-		console.log("Set task config response:", taskCreateResponse);
-
-		useNuxtApp().$toast.info("Добавление разметки успешно!");
-		useTasksStore().getAllTasks();
 	}
 
 	return {
@@ -129,5 +99,6 @@ export const useServicesStore = defineStore("services", () => {
 		createTask,
 		createMarkUpTask,
 		createGenDatasetTask,
+		createNeuralLearningTask,
 	};
 });

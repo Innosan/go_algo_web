@@ -11,9 +11,7 @@ const route = useRoute();
 				<NuxtLink to="/service/mark-up">Разметка</NuxtLink>
 			</li>
 			<li>
-				<NuxtLink to="/service/generate-dataset"
-					>Генерация дата-сета
-				</NuxtLink>
+				<NuxtLink to="/service/dataset">Дата-сеты</NuxtLink>
 			</li>
 			<li>
 				<NuxtLink to="/service/neural-learning"

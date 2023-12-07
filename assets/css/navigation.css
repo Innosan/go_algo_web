@@ -6,3 +6,7 @@
 	background: rgba(237, 67, 69, 0.4) !important;
 	padding: 12px;
 }
+
+.router-link-active {
+	background: rgba(237, 67, 69, 0.4) !important;
+}

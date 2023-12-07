@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useSecuritiesStore } from "~/stores/securitiesStore";
-
-const securitiesStore = useSecuritiesStore();
 const servicesStore = useServicesStore();
 
 const {
@@ -14,10 +11,19 @@ const {
 	selectedMaxUnmarkedBars,
 	onSelect,
 } = useSelectHandlers();
+
+const validateYears = computed(() => {
+	if (selectedStartDate.value && selectedEndDate.value) {
+		const startDate = new Date(selectedStartDate.value);
+		const endDate = new Date(selectedEndDate.value);
+		const diffYears = endDate.getFullYear() - startDate.getFullYear();
+		return diffYears >= 5;
+	}
+	return false;
+});
 </script>
 
 <template>
-	<PageHeading icon="ui/ic_dataset" title="Генерация дата-сета" />
 	<div class="flex flex-row flex-wrap gap-7">
 		<Select
 			title="Параметр разметки"
@@ -75,6 +81,7 @@ const {
 	</div>
 	<button
 		class="text-white"
+		:disabled="!validateYears"
 		@click="
 			servicesStore.createGenDatasetTask({
 				timeframe: selectedTimeframe.timeframe,
@@ -82,14 +89,16 @@ const {
 				start_date: selectedStartDate,
 				end_date: selectedEndDate,
 				extr_bar_count: selectedBars.value,
-				max_unmark: selectedMaxUnmarkedBars.value,
-				data_path: 'app/data/' + selectedTimeframe.timeframe,
+				max_unmark: selectedMaxUnmarkedBars.value / 100.0,
 				size_df: selectedDatasetSize.value,
 			})
 		"
 	>
 		Сгенерировать дата-сет
 	</button>
+	<p v-if="!validateYears">
+		Для лучшей работы рекомендуется промежуток более 5 лет!
+	</p>
 </template>
 
 <style scoped></style>
