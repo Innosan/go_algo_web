@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<p>{{ markup.config.ticker }}</p>
+	<div class="border-2 rounded-xl p-4 flex flex-col gap-4">
+		<p class="font-bold text-2xl">{{ markup.config.ticker }}</p>
 		<div class="flex gap-2 items-center">
 			<NuxtIcon
 				:name="statuses[markup.status].icon"
@@ -29,6 +29,7 @@
 							)
 						"
 						:ticker="markup.config.ticker"
+						:timeframe="timeframeMapping[markup.config.timeframe]"
 					/>
 					<ProfitCard
 						:profit-without-shift="taskResult.profit_without_shift"
@@ -41,6 +42,7 @@
 </template>
 <script setup lang="ts">
 import { statuses } from "~/types";
+import { timeframeMapping } from "~/utils/parameters";
 
 const tasksStore = useTasksStore();
 const taskResult = ref({});

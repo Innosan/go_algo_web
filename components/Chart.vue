@@ -14,6 +14,7 @@ export default {
 	props: {
 		data: {},
 		ticker: "",
+		timeframe: {},
 	},
 	mounted() {
 		let root = am5.Root.new("chartdiv");
@@ -60,8 +61,8 @@ export default {
 		let dateAxis = mainPanel.xAxes.push(
 			am5xy.GaplessDateAxis.new(root, {
 				baseInterval: {
-					timeUnit: "day",
-					count: 1,
+					timeUnit: this.timeframe.title,
+					count: this.timeframe.value,
 				},
 				renderer: am5xy.AxisRendererX.new(root, {
 					minorGridEnabled: true,
@@ -171,8 +172,8 @@ export default {
 		let sbDateAxis = scrollbar.chart.xAxes.push(
 			am5xy.GaplessDateAxis.new(root, {
 				baseInterval: {
-					timeUnit: "day",
-					count: 1,
+					timeUnit: this.timeframe.title,
+					count: this.timeframe.value,
 				},
 				renderer: am5xy.AxisRendererX.new(root, {
 					minorGridEnabled: true,
@@ -366,33 +367,6 @@ export default {
 				}),
 			);
 		}
-
-		let extremSeries = am5xy.LineSeries.new(root, {
-			name: "Extrems",
-			valueXField: "Date",
-			valueYField: "Extrems",
-			xAxis: dateAxis,
-			yAxis: valueAxis,
-		});
-		mainPanel.series.push(extremSeries);
-
-		let trendSeries = am5xy.LineSeries.new(root, {
-			name: "Trend",
-			valueXField: "Date",
-			valueYField: "Trend",
-			xAxis: dateAxis,
-			yAxis: valueAxis,
-		});
-		mainPanel.series.push(trendSeries);
-
-		let signalSeries = am5xy.LineSeries.new(root, {
-			name: "Signals",
-			valueXField: "Date",
-			valueYField: "Signals",
-			xAxis: dateAxis,
-			yAxis: valueAxis,
-		});
-		mainPanel.series.push(signalSeries);
 
 		makeEvent(1619006400000, "S", am5.color(0xff0000), "Split 4:1");
 		makeEvent(1619006400000, "D", am5.color(0x00ff00), "Dividends paid");

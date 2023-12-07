@@ -57,6 +57,7 @@ const {
 		/>
 	</div>
 	<button
+		class="text-white"
 		:disabled="
 			!selectedStartDate ||
 			!selectedEndDate ||
@@ -76,8 +77,4 @@ const {
 	</button>
 </template>
 
-<style scoped>
-button {
-	color: white;
-}
-</style>
+<style scoped></style>

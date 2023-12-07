@@ -27,5 +27,4 @@ export default defineNuxtConfig({
 		},
 	],
 	modules: ["nuxt-headlessui", "nuxt-icons", "@pinia/nuxt"],
-	plugins: [{ src: "~/plugins/tradingVue.client.js", mode: "client" }],
 });

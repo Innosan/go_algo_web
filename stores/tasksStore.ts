@@ -2,19 +2,28 @@ export const useTasksStore = defineStore("tasks", () => {
 	const runtimeConfig = useRuntimeConfig();
 
 	const tasks = ref([]);
+
 	const isFetched = ref(false);
+	const isLoading = ref(false);
+	const isError = ref(null);
 
 	async function getAllTasks() {
-		const { data: allTasks } = await useFetch(
-			runtimeConfig.public.apiRoot + "task/lists/all",
-		);
+		if (!isFetched.value) {
+			const { data: allTasks } = await useFetch(
+				runtimeConfig.public.apiRoot + "task/lists/all",
+			);
 
-		isFetched.value = true;
-		tasks.value = allTasks.value;
+			isFetched.value = true;
+			tasks.value = allTasks.value;
+		}
 	}
 
 	function getTasksByService(service: string) {
-		return tasks.value.filter((task) => task.config?.service === service);
+		if (tasks.value) {
+			return tasks.value.filter(
+				(task) => task.config?.service === service,
+			);
+		}
 	}
 
 	async function getTaskResult(taskId: number) {
@@ -45,6 +54,8 @@ export const useTasksStore = defineStore("tasks", () => {
 	return {
 		tasks,
 		isFetched,
+		isError,
+		isLoading,
 		getAllTasks,
 		getTasksByService,
 		getTaskResult,

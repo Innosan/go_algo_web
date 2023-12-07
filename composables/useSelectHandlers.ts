@@ -3,6 +3,9 @@ export default function useSelectHandlers() {
 	const selectedTimeframe = ref(null);
 	const selectedStartDate = ref(null);
 	const selectedEndDate = ref(null);
+	const selectedDatasetSize = ref(null);
+	const selectedMaxUnmarkedBars = ref(null);
+	const selectedBars = ref(null);
 
 	const onMarkUpSelect = (selected) => {
 		selectedMarkUp.value = selected;
@@ -20,14 +23,32 @@ export default function useSelectHandlers() {
 		selectedEndDate.value = selected;
 	};
 
+	const onDatasetSizeSelect = (selected) => {
+		selectedDatasetSize.value = selected;
+	};
+
+	const onMaxUnmarkedBarsSelect = (selected) => {
+		selectedMaxUnmarkedBars.value = selected;
+	};
+
+	const onBarsSelect = (selected) => {
+		selectedBars.value = selected;
+	};
+
 	return {
 		selectedMarkUp,
 		selectedTimeframe,
 		selectedStartDate,
 		selectedEndDate,
+		selectedDatasetSize,
+		selectedMaxUnmarkedBars,
+		selectedBars,
 		onMarkUpSelect,
 		onTimeframeSelect,
 		onStartDateSelect,
 		onEndDateSelect,
+		onDatasetSizeSelect,
+		onMaxUnmarkedBarsSelect,
+		onBarsSelect,
 	};
 }
