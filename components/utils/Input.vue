@@ -33,7 +33,7 @@ const handleInput = () => {
 			:type="type"
 			:placeholder="placeholder"
 			:id="id"
-			class="p-2 border-b-2 w-1/2 rounded-xl"
+			class="p-2 border-b-2 w-1/2 rounded-xl w-fit"
 		/>
 	</div>
 </template>

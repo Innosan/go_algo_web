@@ -76,4 +76,8 @@ const {
 	</button>
 </template>
 
-<style scoped></style>
+<style scoped>
+button {
+	color: white;
+}
+</style>

@@ -52,6 +52,11 @@ export const useServicesStore = defineStore("services", () => {
 		console.log("Set task config response:", taskCreateResponse);
 
 		useNuxtApp().$toast.info("Добавление разметки успешно!");
+		useTasksStore().getAllTasks();
+
+		setTimeout(() => {
+			navigateTo("/service/mark-up");
+		}, 1000);
 	}
 
 	return {

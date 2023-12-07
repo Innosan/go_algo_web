@@ -4,12 +4,16 @@ button {
 	padding: 10px;
 
 	opacity: .8;
+	background: #000;
 
 	transition: .3s;
 	&:hover {
 		opacity: 1;
+		&:disabled {
+			opacity: .6;
+			cursor: not-allowed;
+		}
 	}
-
 }
 .general-link {
 	opacity: 0.8;

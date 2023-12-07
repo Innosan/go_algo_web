@@ -8,7 +8,11 @@
 			/>
 			<p>{{ statuses[markup.status].title }}</p>
 		</div>
-		<button :disabled="markup.status !== 2" @click="getRes">
+		<button
+			class="text-white hover:border-red-300 transition-all"
+			:disabled="markup.status !== 2"
+			@click="getRes"
+		>
 			Получить результаты
 		</button>
 		<div class="text-black" v-if="taskResult.profit_with_shift">
@@ -24,27 +28,12 @@
 								taskResult.markup.values,
 							)
 						"
+						:ticker="markup.config.ticker"
 					/>
-					<div>
-						<div>
-							<p>
-								{{
-									taskResult.profit_without_shift.description
-								}}
-							</p>
-							<p class="font-bold">
-								{{ taskResult.profit_without_shift.value }}
-							</p>
-						</div>
-						<div>
-							<p>
-								{{ taskResult.profit_with_shift.description }}
-							</p>
-							<p class="font-bold">
-								{{ taskResult.profit_with_shift.value }}
-							</p>
-						</div>
-					</div>
+					<ProfitCard
+						:profit-without-shift="taskResult.profit_without_shift"
+						:profit-with-shift="taskResult.profit_with_shift"
+					/>
 				</ClientOnly>
 			</Dialog>
 		</div>
@@ -64,3 +53,9 @@ const props = defineProps({
 	markup: Object,
 });
 </script>
+
+<style scoped>
+button {
+	color: #fff;
+}
+</style>
