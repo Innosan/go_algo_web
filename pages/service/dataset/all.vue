@@ -2,8 +2,8 @@
 import { serviceFilename } from "~/types";
 import { useTasksStore } from "~/stores/tasksStore";
 const tasksStore = useTasksStore();
-const datasets = tasksStore.getTasksByService(
-	serviceFilename.DATASET_GENERATION,
+const datasets = computed(() =>
+	tasksStore.getTasksByService(serviceFilename.DATASET_GENERATION),
 );
 </script>
 

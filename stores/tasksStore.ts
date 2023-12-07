@@ -3,19 +3,13 @@ export const useTasksStore = defineStore("tasks", () => {
 
 	const tasks = ref([]);
 
-	const isFetched = ref(false);
-	const isLoading = ref(false);
-	const isError = ref(null);
-
 	async function getAllTasks() {
-		if (!isFetched.value) {
-			const { data: allTasks } = await useFetch(
-				runtimeConfig.public.apiRoot + "task/lists/all",
-			);
+		console.log("getti");
+		const { data: allTasks } = await useFetch(
+			runtimeConfig.public.apiRoot + "task/lists/all",
+		);
 
-			isFetched.value = true;
-			tasks.value = allTasks.value;
-		}
+		tasks.value = allTasks.value;
 	}
 
 	function getTasksByService(service: string) {
@@ -53,9 +47,6 @@ export const useTasksStore = defineStore("tasks", () => {
 
 	return {
 		tasks,
-		isFetched,
-		isError,
-		isLoading,
 		getAllTasks,
 		getTasksByService,
 		getTaskResult,

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import RefreshTasks from "~/components/RefreshTasks.vue";
+
 const route = useRoute();
 </script>
 
@@ -23,6 +25,9 @@ const route = useRoute();
 			</li>
 			<li>
 				<NuxtLink to="/service/signals">Сигналы</NuxtLink>
+			</li>
+			<li>
+				<RefreshTasks action="Обновить таски" />
 			</li>
 		</ul>
 	</nav>

@@ -64,7 +64,7 @@ export const useServicesStore = defineStore("services", () => {
 		console.log("Set task config response:", taskCreateResponse);
 
 		useNuxtApp().$toast.info(successfulMessage);
-		useTasksStore().getAllTasks();
+		await useTasksStore().getAllTasks();
 	}
 
 	async function createMarkUpTask(config: object) {

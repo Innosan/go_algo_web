@@ -3,7 +3,9 @@ import MarkUpCard from "~/components/containers/MarkUpCard.vue";
 import { serviceFilename } from "~/types";
 import { useTasksStore } from "~/stores/tasksStore";
 const tasksStore = useTasksStore();
-const markups = tasksStore.getTasksByService(serviceFilename.MARK_UP);
+const markups = computed(() =>
+	tasksStore.getTasksByService(serviceFilename.MARK_UP),
+);
 </script>
 
 <template>
