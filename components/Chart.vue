@@ -385,28 +385,15 @@ export default {
 			);
 		}
 
+		console.log(this.data);
+
 		for (let i = 0; i < this.data.length; i++) {
 			if (this.data[i].Signals === 1) {
-				makeEvent(
-					this.data[i].Datetime,
-					"B",
-					am5.color(0xff0000),
-					"Buy",
-				);
+				makeEvent(this.data[i].Date, "B", am5.color(0x5dc2), "Buy");
 			} else if (this.data[i].Signals === -1) {
-				makeEvent(
-					this.data[i].Datetime,
-					"S",
-					am5.color(0xff0000),
-					"Sell",
-				);
+				makeEvent(this.data[i].Date, "S", am5.color(0xf200), "Sell");
 			}
-			makeEvent(1619006400000, "S", am5.color(0xff0000), "Split 4:1");
 		}
-
-		makeEvent(1619006400000, "S", am5.color(0xff0000), "Split 4:1");
-		makeEvent(1619006400000, "D", am5.color(0x00ff00), "Dividends paid");
-		makeEvent(1634212800000, "D", am5.color(0x00ff00), "Dividends paid");
 
 		valueSeries.data.setAll(this.data);
 		volumeSeries.data.setAll(this.data);
