@@ -128,6 +128,23 @@ export default {
 			}),
 		);
 
+		let trendSeries = mainPanel.series.push(
+			am5xy.LineSeries.new(root, {
+				name: "Trend Series",
+				xAxis: dateAxis,
+				yAxis: volumeValueAxis,
+				valueYField: "Date",
+				valueXField: "Trend",
+			}),
+		);
+
+		trendSeries.fills.template.setAll({
+			visible: true,
+			fillOpacity: 0.3,
+		});
+
+		stockChart.set("trendSeries", trendSeries);
+
 		volumeSeries.columns.template.setAll({
 			strokeOpacity: 0,
 			fillOpacity: 0.5,
@@ -368,6 +385,25 @@ export default {
 			);
 		}
 
+		for (let i = 0; i < this.data.length; i++) {
+			if (this.data[i].Signals === 1) {
+				makeEvent(
+					this.data[i].Datetime,
+					"B",
+					am5.color(0xff0000),
+					"Buy",
+				);
+			} else if (this.data[i].Signals === -1) {
+				makeEvent(
+					this.data[i].Datetime,
+					"S",
+					am5.color(0xff0000),
+					"Sell",
+				);
+			}
+			makeEvent(1619006400000, "S", am5.color(0xff0000), "Split 4:1");
+		}
+
 		makeEvent(1619006400000, "S", am5.color(0xff0000), "Split 4:1");
 		makeEvent(1619006400000, "D", am5.color(0x00ff00), "Dividends paid");
 		makeEvent(1634212800000, "D", am5.color(0x00ff00), "Dividends paid");
@@ -375,6 +411,7 @@ export default {
 		valueSeries.data.setAll(this.data);
 		volumeSeries.data.setAll(this.data);
 		sbSeries.data.setAll(this.data);
+		trendSeries.data.setAll(this.data);
 
 		this.root = root;
 	},

@@ -83,7 +83,7 @@ const {
 		:disabled="!selectedTicker.ticker[0]"
 		@click="
 			servicesStore.createSignalsTask({
-				ticker: selectedTicker.ticker[0].secid,
+				ticker: selectedTicker.mapTickers(selectedTicker.ticker),
 				scaler_path: selectedNeuralNetwork.config.scaler_path,
 				neural_path: selectedNeuralNetwork.config.neural_path,
 				timeframe: selectedTimeframe.timeframe,
@@ -94,7 +94,7 @@ const {
 			})
 		"
 	>
-		Провести бэк-тест
+		Сгенерировать сигналы
 	</button>
 </template>
 

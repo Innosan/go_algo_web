@@ -41,6 +41,8 @@ export const useTasksStore = defineStore("tasks", () => {
 			Low: values.Low[i],
 			Close: values.Close[i],
 			Volume: values.Volume[i],
+			Trend: values.Trend[i],
+			Signals: values.Singals[i],
 		}));
 	}
 

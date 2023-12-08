@@ -1,6 +1,10 @@
 <template>
 	<div class="w-full">
-		<button type="button" @click="openModal" class="button">
+		<button
+			type="button"
+			@click="openModal"
+			class="button hover:bg-black hover:bg-opacity-10"
+		>
 			{{ action }}
 		</button>
 	</div>
@@ -51,7 +55,7 @@
 									class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
 									@click="closeModal"
 								>
-									Got it, thanks!
+									Понятно
 								</button>
 							</div>
 						</DialogPanel>

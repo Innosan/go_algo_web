@@ -10,6 +10,9 @@ export const useSelectedTickerStore = defineStore({
 			this.ticker = tickers;
 			console.log(this.ticker);
 		},
+		mapTickers(tickers) {
+			return JSON.stringify(tickers.map((ticker) => ticker.secid));
+		},
 	},
 });
 

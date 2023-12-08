@@ -101,11 +101,11 @@ export const useServicesStore = defineStore("services", () => {
 	}
 	async function createSignalsTask(config: object) {
 		console.log(config);
-		// await createTask(
-		// 	serviceFilename.SIGNALS,
-		// 	config,
-		// 	"Генерация сигналов началась!",
-		// );
+		await createTask(
+			serviceFilename.SIGNALS,
+			config,
+			"Генерация сигналов началась!",
+		);
 	}
 
 	return {
