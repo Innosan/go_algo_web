@@ -17,7 +17,7 @@
 				</NuxtLink>
 			</li>
 			<li>
-				<NuxtLink to="/service/back-testing">Бек-тесты </NuxtLink>
+				<NuxtLink to="/service/back-testing/all">Бек-тесты </NuxtLink>
 			</li>
 			<li>
 				<NuxtLink to="/service/signals">Сигналы</NuxtLink>

@@ -10,20 +10,21 @@ const {
 	selectedMarkUp,
 	selectedBars,
 	selectedMaxUnmarkedBars,
+	selectedStartDate,
+	selectedEndDate,
 	selectedTimeframe,
 	selectedNeuralNetwork,
-	selectedCountDays,
 	onSelect,
 } = useSelectHandlers();
 </script>
 
 <template>
-	<PageHeading icon="ui/ic_signals" title="Сигналы" />
 	<div class="flex flex-row flex-wrap gap-7">
-		<MultipleSelectTicker
-			title="Тикеры"
+		<SelectTicker
+			title="Тикер"
 			:items="securitiesStore.securities"
 			:description="tickers.description"
+			:is-full-sized="true"
 			display-full-size-key="secname"
 			display-key="secid"
 		/>
@@ -41,12 +42,6 @@ const {
 			@select="(selected) => onSelect('selectedTimeframe', selected)"
 			:description="timeframes.description"
 			display-key="title"
-		/>
-		<Select
-			title="Количество дней"
-			:items="countDays"
-			@select="(selected) => onSelect('selectedCountDays', selected)"
-			display-key="value"
 		/>
 		<Select
 			title="Количество баров"
@@ -67,8 +62,8 @@ const {
 			display-key="value"
 		/>
 		<Select
-			title="Сеть для генерации"
-			description="Здесь можно выбрать сеть для генерации. Выбрать можно только сеть, которая уже обучена."
+			title="Какую сеть тестируем"
+			description="Здесь можно выбрать сеть для тестирования. Выбрать можно только сеть, которая уже обучена."
 			:items="
 				tasksStore
 					.getTasksByService(serviceFilename.NEURAL_LEARNING)
@@ -77,20 +72,38 @@ const {
 			@select="(selected) => onSelect('selectedNeuralNetwork', selected)"
 			display-key="id"
 		/>
+
+		<Input
+			type="date"
+			@input="(selected) => onSelect('selectedStartDate', selected)"
+			title="Тестовые данные с"
+			id="start_date"
+		/>
+		<Input
+			type="date"
+			@input="(selected) => onSelect('selectedEndDate', selected)"
+			title="Тестовые данные по"
+			id="end_date"
+		/>
 	</div>
 	<button
 		class="text-white"
-		:disabled="!selectedTicker.ticker[0]"
+		:disabled="
+			!selectedStartDate ||
+			!selectedEndDate ||
+			!selectedTicker.ticker.secid
+		"
 		@click="
-			servicesStore.createSignalsTask({
-				ticker: selectedTicker.ticker[0].secid,
+			servicesStore.createBackTestTask({
 				scaler_path: selectedNeuralNetwork.config.scaler_path,
 				neural_path: selectedNeuralNetwork.config.neural_path,
+				ticker: selectedTicker.ticker.secid,
 				timeframe: selectedTimeframe.timeframe,
+				start_date: selectedStartDate,
+				end_date: selectedEndDate,
 				count_points: selectedMarkUp.value,
 				extr_bar_count: selectedBars.value,
 				max_unmark: selectedMaxUnmarkedBars.value / 100.0,
-				count_days: selectedCountDays.value,
 			})
 		"
 	>
