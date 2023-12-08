@@ -26,11 +26,7 @@
 			>
 				<ClientOnly>
 					<Chart
-						:data="
-							tasksStore.transformChartData(
-								taskResult.markup.values,
-							)
-						"
+						:data="transformedChartData"
 						:ticker="markup.config.ticker"
 						:timeframe="timeframeMapping[markup.config.timeframe]"
 					/>
@@ -49,9 +45,14 @@ import { timeframeMapping } from "~/utils/parameters";
 
 const tasksStore = useTasksStore();
 const taskResult = ref({});
+let transformedChartData = [];
 
 const getRes = async () => {
 	taskResult.value = await tasksStore.getTaskResult(props.markup.id);
+
+	transformedChartData = tasksStore.transformChartData(
+		taskResult.value.markup.values,
+	);
 };
 
 const props = defineProps({

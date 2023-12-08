@@ -385,20 +385,21 @@ export default {
 			);
 		}
 
-		console.log(this.data);
-
+		let chang = false;
 		for (let i = 0; i < this.data.length; i++) {
-			if (this.data[i].Signals === 1) {
+			if (this.data[i].Signals === 1 && !chang) {
 				makeEvent(this.data[i].Date, "B", am5.color(0x5dc2), "Buy");
-			} else if (this.data[i].Signals === -1) {
+				chang = true;
+			} else if (this.data[i].Signals === -1 && chang) {
 				makeEvent(this.data[i].Date, "S", am5.color(0xf200), "Sell");
+				chang = false;
 			}
 		}
 
 		valueSeries.data.setAll(this.data);
 		volumeSeries.data.setAll(this.data);
 		sbSeries.data.setAll(this.data);
-		trendSeries.data.setAll(this.data);
+		//trendSeries.data.setAll(this.data);
 
 		this.root = root;
 	},
