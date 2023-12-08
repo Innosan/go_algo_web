@@ -1,6 +1,7 @@
 <template>
 	<div
 		class="border-2 hover:border-b-red-400 transition-all rounded-xl p-4 flex flex-col gap-4"
+		v-auto-animate
 	>
 		<p class="font-bold text-2xl">{{ markup.config.ticker }}</p>
 		<div class="flex gap-2 items-center opacity-60">
@@ -12,12 +13,16 @@
 		</div>
 		<button
 			class="text-white hover:border-red-300 transition-all"
-			:disabled="markup.status !== 2"
+			:disabled="markup.status !== 2 || taskResult.profit_with_shift"
 			@click="getRes"
 		>
 			Получить результаты
 		</button>
-		<div class="text-black w-full" v-if="taskResult.profit_with_shift">
+		<div
+			key="dialog"
+			class="text-black"
+			v-if="taskResult.profit_with_shift"
+		>
 			<Dialog
 				heading="График"
 				:ticker="markup.config.ticker"
@@ -50,7 +55,7 @@ let transformedChartData = [];
 const getRes = async () => {
 	taskResult.value = await tasksStore.getTaskResult(props.markup.id);
 
-	transformedChartData = tasksStore.transformChartData(
+	transformedChartData = tasksStore.transformMarkUpChartData(
 		taskResult.value.markup.values,
 	);
 };

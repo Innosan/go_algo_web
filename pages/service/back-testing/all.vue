@@ -2,6 +2,7 @@
 import { serviceFilename, statuses } from "~/types";
 import { useTasksStore } from "~/stores/tasksStore";
 import type { BackTestResult, isBuyHoldSharp } from "~/types/backTestResult";
+import { timeframeMapping } from "~/utils/parameters";
 const tasksStore = useTasksStore();
 const tests = computed(() =>
 	tasksStore.getTasksByService(serviceFilename.BACK_TESTING),
@@ -37,11 +38,23 @@ function isBuyHoldSharp(obj: any) {
 				:heading="statuses[test.status].title"
 				:icon="statuses[test.status].icon"
 			/>
-			<div class="flex flex-col gap-4" v-if="test.status === 2">
-				<button @click="getRes(test.id)" class="text-white">
+			<div
+				class="flex flex-col gap-4"
+				v-if="test.status === 2"
+				v-auto-animate
+			>
+				<button
+					@click="getRes(test.id)"
+					class="text-white"
+					key="res_button"
+				>
 					Посмотреть результаты
 				</button>
-				<div v-if="taskResult.task_id" class="flex gap-4 items-center">
+				<div
+					v-if="taskResult.task_id"
+					class="flex gap-4 items-center"
+					key="dialogs"
+				>
 					<Dialog
 						:ticker="test.config.ticker"
 						description="dq"
@@ -65,26 +78,36 @@ function isBuyHoldSharp(obj: any) {
 							</template>
 						</div>
 					</Dialog>
-					<Dialog
-						:ticker="test.config.ticker"
-						description=""
-						heading="Пказатели"
-						action="Графики"
-					>
-						<div class="flex gap-4 flex-wrap">
-							<template
-								v-for="(value, key) in taskResult"
-								:key="key"
-							>
-								<div
-									class="w-fit border-2 rounded-xl p-2"
-									v-if="isBuyHoldSharp(value)"
-								>
-									<p>{{ value.description }}</p>
-									<p class="font-bold">{{ value.value }}</p>
-								</div>
-							</template>
-						</div>
+					<Dialog action="Графики">
+						<ClientOnly>
+							<Tabs>
+								<template #ideal>
+									<XYChart
+										:data="
+											tasksStore.transformBackTestData(
+												taskResult.dyn_neural_trading
+													.value,
+											)
+										"
+										:ticker="'fwef'"
+										:timeframe="''"
+									/>
+								</template>
+
+								<template #neural>
+									<XYChart
+										:data="
+											tasksStore.transformBackTestData(
+												taskResult.dyn_ideal_trading
+													.value,
+											)
+										"
+										:ticker="'fwef'"
+										:timeframe="''"
+									/>
+								</template>
+							</Tabs>
+						</ClientOnly>
 					</Dialog>
 				</div>
 			</div>

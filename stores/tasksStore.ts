@@ -32,7 +32,7 @@ export const useTasksStore = defineStore("tasks", () => {
 		return taskResult.value;
 	}
 
-	function transformChartData(taskResult: any) {
+	function transformMarkUpChartData(taskResult: any) {
 		let values = taskResult;
 		return values.Datetime.map((time, i) => ({
 			Date: time / 1000000,
@@ -46,11 +46,20 @@ export const useTasksStore = defineStore("tasks", () => {
 		}));
 	}
 
+	function transformBackTestData(taskResult: any) {
+		return taskResult.Datetime.map((time, i) => ({
+			Date: time / 1000000,
+			dyn_trades_profit: taskResult.dyn_trades_profit[i],
+			dyn_portfel_profit: taskResult.dyn_portfel_profit[i],
+		}));
+	}
+
 	return {
 		tasks,
 		getAllTasks,
 		getTasksByService,
 		getTaskResult,
-		transformChartData,
+		transformMarkUpChartData,
+		transformBackTestData,
 	};
 });

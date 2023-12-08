@@ -26,5 +26,10 @@ export default defineNuxtConfig({
 			pathPrefix: false,
 		},
 	],
-	modules: ["nuxt-headlessui", "nuxt-icons", "@pinia/nuxt"],
+	modules: [
+		"nuxt-headlessui",
+		"nuxt-icons",
+		"@pinia/nuxt",
+		"@formkit/auto-animate/nuxt",
+	],
 });

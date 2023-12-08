@@ -78,9 +78,18 @@ import {
 const isOpen = ref(false);
 
 const props = defineProps({
-	heading: String,
-	description: String,
-	ticker: String,
+	heading: {
+		type: String,
+		default: "",
+	},
+	description: {
+		type: String,
+		default: "",
+	},
+	ticker: {
+		type: String,
+		default: "",
+	},
 	action: String,
 });
 

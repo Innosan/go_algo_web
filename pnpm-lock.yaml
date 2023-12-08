@@ -8,6 +8,9 @@ dependencies:
   '@amcharts/amcharts5':
     specifier: ^5.6.2
     version: 5.6.2
+  '@formkit/auto-animate':
+    specifier: ^0.8.1
+    version: 0.8.1
   '@pinia/nuxt':
     specifier: ^0.5.1
     version: 0.5.1(vue@3.3.9)
@@ -859,6 +862,10 @@ packages:
 
   /@foliojs-fork/restructure@2.0.2:
     resolution: {integrity: sha512-59SgoZ3EXbkfSX7b63tsou/SDGzwUEK6MuB5sKqgVK1/XE0fxmpsOb9DQI8LXW3KfGnAjImCGhhEb7uPPAUVNA==}
+    dev: false
+
+  /@formkit/auto-animate@0.8.1:
+    resolution: {integrity: sha512-0/Z2cuNXWVVIG/l0SpcHAWFhGdvLJ8DRvEfRWvmojtmRWfEy+LWNwgDazbZqY0qQYtkHcoEK3jBLkhiZaB/4Ig==}
     dev: false
 
   /@headlessui/vue@1.7.16(vue@3.3.9):
