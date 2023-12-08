@@ -7,7 +7,6 @@
 		<NuxtLink to="/service/mark-up/add-new">Добавить новую</NuxtLink>
 	</div>
 	<NuxtPage />
-	<p>Здесь можно отобразить какую-нибудь инфу о сервисе</p>
 </template>
 
 <style scoped lang="scss">

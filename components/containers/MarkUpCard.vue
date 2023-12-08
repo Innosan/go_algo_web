@@ -1,12 +1,14 @@
 <template>
-	<div class="border-2 rounded-xl p-4 flex flex-col gap-4">
+	<div
+		class="border-2 hover:border-b-red-400 transition-all rounded-xl p-4 flex flex-col gap-4"
+	>
 		<p class="font-bold text-2xl">{{ markup.config.ticker }}</p>
-		<div class="flex gap-2 items-center">
+		<div class="flex gap-2 items-center opacity-60">
 			<NuxtIcon
 				:name="statuses[markup.status].icon"
 				:alt="statuses[markup.status].title"
 			/>
-			<p>{{ statuses[markup.status].title }}</p>
+			<p class="font-bold">{{ statuses[markup.status].title }}</p>
 		</div>
 		<button
 			class="text-white hover:border-red-300 transition-all"
@@ -15,9 +17,10 @@
 		>
 			Получить результаты
 		</button>
-		<div class="text-black" v-if="taskResult.profit_with_shift">
+		<div class="text-black w-full" v-if="taskResult.profit_with_shift">
 			<Dialog
 				heading="График"
+				:ticker="markup.config.ticker"
 				action="Показать график"
 				description="gerrg"
 			>

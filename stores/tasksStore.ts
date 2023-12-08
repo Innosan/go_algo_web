@@ -4,7 +4,6 @@ export const useTasksStore = defineStore("tasks", () => {
 	const tasks = ref([]);
 
 	async function getAllTasks() {
-		console.log("getti");
 		const { data: allTasks } = await useFetch(
 			runtimeConfig.public.apiRoot + "task/lists/all",
 		);

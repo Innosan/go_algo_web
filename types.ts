@@ -8,12 +8,13 @@ export enum serviceFilename {
 	MARK_UP = "data_markup.py",
 	DATASET_GENERATION = "data_gen.py",
 	BACK_TESTING = "calc_profit.py",
+	SIGNALS = "calc_signals.py",
 	NEURAL_LEARNING = "edu_neural.py",
 }
 
 export const statuses = {
 	0: {
-		icon: "ui/",
+		icon: "ui/ic_in_queue",
 		title: "В очереди",
 	},
 	1: {
@@ -25,7 +26,7 @@ export const statuses = {
 		title: "Выполнен",
 	},
 	3: {
-		icon: "Выполнен",
+		icon: "ui/ic_with_error",
 		title: "С ошибкой",
 	},
 };

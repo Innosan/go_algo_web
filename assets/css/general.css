@@ -24,4 +24,8 @@ button:hover:disabled {
   text-decoration: underline;
 }
 
+*:disabled {
+  opacity: 0.4;
+}
+
 /*# sourceMappingURL=general.css.map */

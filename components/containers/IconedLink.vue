@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const props = defineProps({
 	navigateTo: String,
+	title: String,
 });
 </script>
 
@@ -11,7 +12,7 @@ const props = defineProps({
 		target="_blank"
 	>
 		<NuxtIcon class="opacity-70" name="ui/ic_link" alt="Link icon" />
-		<p>Страница хакатона</p>
+		<p>{{ title }}</p>
 	</a>
 </template>
 

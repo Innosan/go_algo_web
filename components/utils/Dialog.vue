@@ -1,5 +1,5 @@
 <template>
-	<div class="">
+	<div class="w-full">
 		<button type="button" @click="openModal" class="button">
 			{{ action }}
 		</button>
@@ -38,13 +38,8 @@
 								as="h3"
 								class="text-lg font-medium leading-6 text-gray-900"
 							>
-								{{ heading }}
+								{{ heading + " " + ticker }}
 							</DialogTitle>
-							<div class="mt-2">
-								<p class="text-sm text-gray-500">
-									{{ description }}
-								</p>
-							</div>
 
 							<div>
 								<slot />
@@ -81,6 +76,7 @@ const isOpen = ref(false);
 const props = defineProps({
 	heading: String,
 	description: String,
+	ticker: String,
 	action: String,
 });
 

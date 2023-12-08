@@ -19,8 +19,15 @@
 				</div>
 			</div>
 		</div>
-		<div>
-			<IconedLink navigate-to="https://goalgo.ru/" />
+		<div class="flex gap-4">
+			<IconedLink
+				title="Страница хакатона"
+				navigate-to="https://goalgo.ru/"
+			/>
+			<IconedLink
+				title="Мастер-репозиторий"
+				navigate-to="https://github.com/DaniilVdovin/GO.ALGO.Neuro"
+			/>
 		</div>
 	</footer>
 </template>

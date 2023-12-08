@@ -17,7 +17,6 @@ export default function useSelectHandlers() {
 
 	const onSelect = (key, selected) => {
 		state[key] = selected;
-		console.log(state[key]);
 	};
 
 	return {

@@ -76,8 +76,6 @@ export const useServicesStore = defineStore("services", () => {
 	}
 
 	async function createGenDatasetTask(config: object) {
-		console.log(config);
-
 		await createTask(
 			serviceFilename.DATASET_GENERATION,
 			config,
