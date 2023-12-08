@@ -184,3 +184,18 @@ export const validationSteps = [
 		value: 256,
 	},
 ];
+
+export const countDays = [
+	{
+		id: 1,
+		value: 90,
+	},
+	{
+		id: 2,
+		value: 180,
+	},
+	{
+		id: 2,
+		value: 360,
+	},
+];

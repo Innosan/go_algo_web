@@ -3,11 +3,12 @@ import type { Security } from "~/types";
 export const useSelectedTickerStore = defineStore({
 	id: "selectedTicker",
 	state: () => ({
-		ticker: <Security>{},
+		ticker: <Security>[],
 	}),
 	actions: {
-		selectTicker(ticker) {
-			this.ticker = ticker;
+		selectTicker(tickers) {
+			this.ticker = tickers;
+			console.log(this.ticker);
 		},
 	},
 });

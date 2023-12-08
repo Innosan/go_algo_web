@@ -91,6 +91,23 @@ export const useServicesStore = defineStore("services", () => {
 		);
 	}
 
+	async function createBackTestTask(config: object) {
+		console.log(config);
+		await createTask(
+			serviceFilename.BACK_TESTING,
+			config,
+			"Тестирование нейросети началось!",
+		);
+	}
+	async function createSignalsTask(config: object) {
+		console.log(config);
+		// await createTask(
+		// 	serviceFilename.SIGNALS,
+		// 	config,
+		// 	"Генерация сигналов началась!",
+		// );
+	}
+
 	return {
 		markUpResponse,
 		taskResponse,
@@ -98,5 +115,7 @@ export const useServicesStore = defineStore("services", () => {
 		createMarkUpTask,
 		createGenDatasetTask,
 		createNeuralLearningTask,
+		createBackTestTask,
+		createSignalsTask,
 	};
 });
