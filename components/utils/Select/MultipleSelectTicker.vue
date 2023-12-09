@@ -50,7 +50,7 @@ const handleSelect = (value) => {
 						class="relative w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
 					>
 						<span
-							v-for="ticker in selectedTickerStore.ticker"
+							v-for="ticker in selectedItem"
 							class="block truncate"
 						>
 							{{ ticker[displayKey] }}
