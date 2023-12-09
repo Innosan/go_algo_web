@@ -26,7 +26,7 @@
     "@pinia/nuxt": "^0.5.1",
     "nuxt-icons": "^3.2.1",
     "pinia": "^2.1.7",
-    "trading-vue-js": "^1.0.2",
+    "tslib": "^2.6.2",
     "vue3-toastify": "^0.1.14"
   }
 }
