@@ -4,10 +4,12 @@ import type { Security } from "~/types";
 export const useSecuritiesStore = defineStore("securities", () => {
 	const runtimeConfig = useRuntimeConfig();
 	const securities = ref<Security[]>([]);
+	const leaderboard = ref<Security[]>([]);
 
-	const isFetched = ref(false);
+	const isSecuritiesFetched = ref(false);
+	const isLeaderboardFetched = ref(false);
 	async function fetchSecurities() {
-		if (!isFetched.value) {
+		if (!isSecuritiesFetched.value) {
 			const { data: securitiesData } = await useFetch(
 				runtimeConfig.public.apiRoot + "data/lists/securities",
 				{
@@ -19,13 +21,27 @@ export const useSecuritiesStore = defineStore("securities", () => {
 			);
 
 			securities.value = securitiesData.value;
-			isFetched.value = true;
+			isSecuritiesFetched.value = true;
+		}
+	}
+
+	async function fetchLeaderboard() {
+		if (!isLeaderboardFetched.value) {
+			const { data: leaderboardData } = await useFetch(
+				runtimeConfig.public.apiRoot + "leaderboard",
+			);
+
+			leaderboard.value = leaderboardData.value;
+			isLeaderboardFetched.value = true;
 		}
 	}
 
 	return {
 		securities,
-		isFetched,
+		leaderboard,
+		isFetched: isSecuritiesFetched,
+		isLeaderboardFetched,
 		fetchSecurities,
+		fetchLeaderboard,
 	};
 });

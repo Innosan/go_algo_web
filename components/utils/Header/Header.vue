@@ -6,13 +6,7 @@
 		<nav>
 			<ul class="flex gap-4 font-bold">
 				<li>
-					<HeaderItem navigate-to="/" title="Стратегии" />
-				</li>
-				<li>
-					<HeaderItem navigate-to="/about" title="О сервисе" />
-				</li>
-				<li>
-					<HeaderItem navigate-to="/service" title="Сервисы" />
+					<HeaderItem navigate-to="/" title="Главная" />
 				</li>
 			</ul>
 		</nav>

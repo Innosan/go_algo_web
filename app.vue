@@ -7,6 +7,7 @@ const tasksStore = useTasksStore();
 
 tasksStore.getAllTasks();
 securities.fetchSecurities();
+securities.fetchLeaderboard();
 </script>
 
 <template>

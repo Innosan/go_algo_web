@@ -4,7 +4,6 @@ export const useTasksStore = defineStore("tasks", () => {
 	const tasks = ref([]);
 
 	async function getAllTasks() {
-		console.log("getti");
 		const { data: allTasks } = await useFetch(
 			runtimeConfig.public.apiRoot + "task/lists/all",
 		);
@@ -33,7 +32,7 @@ export const useTasksStore = defineStore("tasks", () => {
 		return taskResult.value;
 	}
 
-	function transformChartData(taskResult: any) {
+	function transformMarkUpChartData(taskResult: any) {
 		let values = taskResult;
 		return values.Datetime.map((time, i) => ({
 			Date: time / 1000000,
@@ -42,6 +41,16 @@ export const useTasksStore = defineStore("tasks", () => {
 			Low: values.Low[i],
 			Close: values.Close[i],
 			Volume: values.Volume[i],
+			Trend: values.Trend[i],
+			Signals: values.Singals[i],
+		}));
+	}
+
+	function transformBackTestData(taskResult: any) {
+		return taskResult.Datetime.map((time, i) => ({
+			Date: time / 1000000,
+			dyn_trades_profit: taskResult.dyn_trades_profit[i],
+			dyn_portfel_profit: taskResult.dyn_portfel_profit[i],
 		}));
 	}
 
@@ -50,6 +59,7 @@ export const useTasksStore = defineStore("tasks", () => {
 		getAllTasks,
 		getTasksByService,
 		getTaskResult,
-		transformChartData,
+		transformMarkUpChartData,
+		transformBackTestData,
 	};
 });

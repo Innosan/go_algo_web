@@ -13,6 +13,8 @@ export default function useSelectHandlers() {
 		selectedNewModelFlag: true,
 		selectedLearningRate: null,
 		selectedDataSet: null,
+		selectedNeuralNetwork: null,
+		selectedCountDays: null,
 	});
 
 	const onSelect = (key, selected) => {

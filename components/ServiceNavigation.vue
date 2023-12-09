@@ -1,19 +1,15 @@
-<script setup lang="ts">
-import RefreshTasks from "~/components/RefreshTasks.vue";
-
-const route = useRoute();
-</script>
+<script setup lang="ts"></script>
 
 <template>
-	<nav
-		class="flex flex-col gap-8 bg-black bg-opacity-90 text-white p-6 rounded-2xl"
-	>
-		<ul class="flex flex-row gap-4">
+	<nav>
+		<ul
+			class="flex bg-opacity-90 text-white rounded-2xl flex-row gap-4 w-fit bg-black p-6"
+		>
 			<li>
-				<NuxtLink to="/service/mark-up">Разметка</NuxtLink>
+				<NuxtLink to="/service/mark-up/all">Разметка</NuxtLink>
 			</li>
 			<li>
-				<NuxtLink to="/service/dataset">Дата-сеты</NuxtLink>
+				<NuxtLink to="/service/dataset/all">Дата-сеты</NuxtLink>
 			</li>
 			<li>
 				<NuxtLink to="/service/neural-learning"
@@ -21,13 +17,10 @@ const route = useRoute();
 				</NuxtLink>
 			</li>
 			<li>
-				<NuxtLink to="/service/back-testing">Бек-тесты </NuxtLink>
+				<NuxtLink to="/service/back-testing/all">Бек-тесты </NuxtLink>
 			</li>
 			<li>
 				<NuxtLink to="/service/signals">Сигналы</NuxtLink>
-			</li>
-			<li>
-				<RefreshTasks action="Обновить таски" />
 			</li>
 		</ul>
 	</nav>

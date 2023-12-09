@@ -1,6 +1,10 @@
 <template>
-	<div class="">
-		<button type="button" @click="openModal" class="button">
+	<div class="w-full">
+		<button
+			type="button"
+			@click="openModal"
+			class="button hover:bg-black hover:bg-opacity-10"
+		>
 			{{ action }}
 		</button>
 	</div>
@@ -38,13 +42,8 @@
 								as="h3"
 								class="text-lg font-medium leading-6 text-gray-900"
 							>
-								{{ heading }}
+								{{ heading + " " + ticker }}
 							</DialogTitle>
-							<div class="mt-2">
-								<p class="text-sm text-gray-500">
-									{{ description }}
-								</p>
-							</div>
 
 							<div>
 								<slot />
@@ -56,7 +55,7 @@
 									class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
 									@click="closeModal"
 								>
-									Got it, thanks!
+									Понятно
 								</button>
 							</div>
 						</DialogPanel>
@@ -79,8 +78,18 @@ import {
 const isOpen = ref(false);
 
 const props = defineProps({
-	heading: String,
-	description: String,
+	heading: {
+		type: String,
+		default: "",
+	},
+	description: {
+		type: String,
+		default: "",
+	},
+	ticker: {
+		type: String,
+		default: "",
+	},
 	action: String,
 });
 

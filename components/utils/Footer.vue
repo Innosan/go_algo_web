@@ -10,17 +10,15 @@
 			</p>
 			<p>Решение разработано в рамках Хакатона GO.ALGO</p>
 		</div>
-		<div>
-			<h5 class="text-xl font-bold">Участники</h5>
-			<div class="flex flex-row gap-6 border-b-2 border-gray-400 pb-2">
-				<div v-for="dev in developers">
-					<p>{{ dev.name }}</p>
-					<p class="opacity-50">{{ dev.role }}</p>
-				</div>
-			</div>
-		</div>
-		<div>
-			<IconedLink navigate-to="https://goalgo.ru/" />
+		<div class="flex gap-4">
+			<IconedLink
+				title="Страница хакатона"
+				navigate-to="https://goalgo.ru/"
+			/>
+			<IconedLink
+				title="Мастер-репозиторий"
+				navigate-to="https://github.com/DaniilVdovin/GO.ALGO.Neuro"
+			/>
 		</div>
 	</footer>
 </template>

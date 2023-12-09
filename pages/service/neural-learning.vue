@@ -14,10 +14,18 @@ const {
 
 const servicesStore = useServicesStore();
 const tasksStore = useTasksStore();
+
+const datasets = computed(() =>
+	tasksStore.getTasksByService(serviceFilename.DATASET_GENERATION),
+);
 </script>
 
 <template>
 	<PageHeading icon="ui/ic_neural_network" title="Обучение сети" />
+	<p v-if="datasets.length === 0" class="font-bold text-xl opacity-70">
+		Пока датасетов нет, эта страница бесполезна. Но вы можете почитать
+		описания параметров!
+	</p>
 	<div class="flex flex-row flex-wrap gap-7">
 		<Select
 			title="Число эпох"
@@ -50,10 +58,9 @@ const tasksStore = useTasksStore();
 			display-key="value"
 		/>
 		<Select
+			v-if="datasets.length !== 0"
 			title="Дата-сет"
-			:items="
-				tasksStore.getTasksByService(serviceFilename.DATASET_GENERATION)
-			"
+			:items="datasets"
 			@select="(selected) => onSelect('selectedDataSet', selected)"
 			display-key="id"
 			:is-full-sized="true"
@@ -75,6 +82,7 @@ const tasksStore = useTasksStore();
 	</div>
 	<button
 		class="text-white"
+		:disabled="datasets.length === 0 || selectedLearningRate === null"
 		@click="
 			servicesStore.createNeuralLearningTask({
 				data_path: selectedDataSet.config.data_path,
