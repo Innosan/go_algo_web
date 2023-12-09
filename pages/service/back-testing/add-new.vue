@@ -24,14 +24,11 @@ const neuralNetworks = computed(() =>
 </script>
 
 <template>
+	<p v-if="neuralNetworks.length === 0" class="font-bold text-xl opacity-70">
+		Пока сетей нет, эта страница бесполезна. Но вы можете почитать описания
+		параметров!
+	</p>
 	<div class="flex flex-row flex-wrap gap-7">
-		<p
-			v-if="neuralNetworks.length === 0"
-			class="font-bold text-xl opacity-70"
-		>
-			Пока сетей нет, эта страница бесполезна. Но вы можете почитать
-			описания параметров!
-		</p>
 		<SelectTicker
 			title="Тикер"
 			:items="securitiesStore.securities"

@@ -35,7 +35,7 @@ const handleSelect = (value) => {
 
 <template>
 	<div
-		class="flex flex-col justify-between gap-4 w-5/12 border-2 hover:border-b-red-400 transition-all rounded-2xl p-4"
+		class="flex select flex-col justify-between gap-4 w-5/12 border-2 hover:border-b-red-400 transition-all rounded-2xl p-4"
 	>
 		<p class="text-2xl font-bold">{{ title }}</p>
 		<p v-if="description" class="opacity-60">{{ description }}</p>
@@ -47,10 +47,12 @@ const handleSelect = (value) => {
 			>
 				<div class="relative mt-1 full-size">
 					<ListboxButton
+						v-auto-animate
 						class="relative w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
 					>
 						<span
 							v-for="ticker in selectedItem"
+							:key="ticker.secid"
 							class="block truncate"
 						>
 							{{ ticker[displayKey] }}
@@ -118,6 +120,10 @@ const handleSelect = (value) => {
 <style>
 .options {
 	z-index: 10000;
+}
+
+.select {
+	width: 45%;
 }
 
 .full-size {
