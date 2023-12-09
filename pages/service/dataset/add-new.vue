@@ -96,8 +96,8 @@ const validateYears = computed(() => {
 	>
 		Сгенерировать дата-сет
 	</button>
-	<p v-if="!validateYears">
-		Для лучшей работы рекомендуется промежуток более 5 лет!
+	<p v-if="!validateYears" class="font-bold text-xl opacity-70">
+		Для лучшей работы рекомендуется промежуток более 5 лет.
 	</p>
 </template>
 

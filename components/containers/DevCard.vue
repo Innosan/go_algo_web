@@ -5,9 +5,9 @@ const props = defineProps({
 </script>
 
 <template>
-	<div class="dev-card grid grid-cols-2 gap-2">
+	<div class="dev-card grid grid-flow-col-dense gap-2">
 		<img
-			class="object-cover rounded-2xl w-40 h-40"
+			class="object-cover object-center rounded-2xl h-40"
 			:src="dev.photo"
 			alt=""
 		/>
@@ -25,6 +25,11 @@ const props = defineProps({
 <style scoped>
 div {
 	opacity: 1 !important;
+}
+
+img {
+	min-width: 10em;
+	min-height: 10em;
 }
 
 .dev-card {

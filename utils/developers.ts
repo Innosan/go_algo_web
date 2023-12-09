@@ -20,7 +20,8 @@ export const developers = [
 		name: "Ильяс Харисов",
 		role: "back-end",
 		tags: ["", "", ""],
-		description: "",
+		description:
+			'Резидент стартап студии "Структура", программист в лаборатории ФИЦ РАН СПИИРАН',
 		photo: "/dev-photos/iliyas.png",
 	},
 	{

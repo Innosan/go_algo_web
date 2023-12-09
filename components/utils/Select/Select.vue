@@ -43,7 +43,7 @@ onMounted(() => {
 
 <template>
 	<div
-		class="flex flex-col justify-between gap-4 w-5/12 border-2 hover:border-b-red-400 transition-all rounded-2xl p-4"
+		class="flex flex-col justify-between gap-4 select border-2 hover:border-b-red-400 transition-all rounded-2xl p-4"
 	>
 		<p class="text-2xl font-bold">{{ title }}</p>
 		<p v-if="description" class="opacity-60">{{ description }}</p>
@@ -54,9 +54,10 @@ onMounted(() => {
 					class="relative mt-1"
 				>
 					<ListboxButton
+						v-auto-animate
 						class="relative w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
 					>
-						<span class="block truncate">
+						<span class="block truncate" :key="selectedItem">
 							{{ selectedItem[displayKey] }}
 							<span class="opacity-70" v-if="isFullSized">
 								- {{ selectedItem[displayFullSizeKey] }}
@@ -125,6 +126,10 @@ onMounted(() => {
 <style>
 .options {
 	z-index: 10000;
+}
+
+.select {
+	width: 45%;
 }
 
 .full-size {
