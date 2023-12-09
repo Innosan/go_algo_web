@@ -12,7 +12,7 @@
 				<NuxtLink to="/service/dataset/all">Дата-сеты</NuxtLink>
 			</li>
 			<li>
-				<NuxtLink to="/service/neural-learning"
+				<NuxtLink to="/service/neural-learning/all"
 					>Обучение сети
 				</NuxtLink>
 			</li>
@@ -20,7 +20,7 @@
 				<NuxtLink to="/service/back-testing/all">Бек-тесты </NuxtLink>
 			</li>
 			<li>
-				<NuxtLink to="/service/signals">Сигналы</NuxtLink>
+				<NuxtLink to="/service/signals/all">Сигналы</NuxtLink>
 			</li>
 		</ul>
 	</nav>

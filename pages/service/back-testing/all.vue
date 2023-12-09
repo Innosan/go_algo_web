@@ -3,6 +3,7 @@ import { serviceFilename, statuses } from "~/types";
 import type { BackTestResult } from "~/types/backTestResult";
 
 import { useTasksStore } from "~/stores/tasksStore";
+import CloseTaskButton from "~/components/utils/CloseTaskButton.vue";
 const tasksStore = useTasksStore();
 
 const tests = computed(() =>
@@ -39,6 +40,10 @@ function isBuyHoldSharp(obj: any) {
 			<CardHeading
 				:heading="statuses[test.status].title"
 				:icon="statuses[test.status].icon"
+			/>
+			<CloseTaskButton
+				v-if="test.status !== 2 && test.status !== 3"
+				:task-id="test.id"
 			/>
 			<div
 				class="flex flex-col gap-4"
