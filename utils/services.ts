@@ -20,7 +20,7 @@ export const services = [
 		description: "Мы обучаем нейронные сети для анализа финансовых данных.",
 	},
 	{
-		link: "/service/back-testing",
+		link: "/service/back-testing/all",
 		icon: "ui/ic_strategies",
 		title: "Оценка доходности",
 		description:

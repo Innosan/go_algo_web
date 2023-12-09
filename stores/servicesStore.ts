@@ -7,7 +7,6 @@ export const useServicesStore = defineStore("services", () => {
 
 	const markUpResponse = ref({});
 	const taskResponse = ref({});
-	const datasetConfig = ref({});
 
 	async function createTask(
 		service: string,
