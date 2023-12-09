@@ -4,7 +4,7 @@ import type { Security } from "~/types";
 export const useSecuritiesStore = defineStore("securities", () => {
 	const runtimeConfig = useRuntimeConfig();
 	const securities = ref<Security[]>([]);
-	const leaderboard = ref<Security[]>([]);
+	const leaderboard = ref([]);
 
 	const isSecuritiesFetched = ref(false);
 	const isLeaderboardFetched = ref(false);
@@ -36,6 +36,16 @@ export const useSecuritiesStore = defineStore("securities", () => {
 		}
 	}
 
+	function getSortedLeaderboard(timeframe) {
+		return leaderboard.value
+			.sort((a, b) => b.predict_profit - a.predict_profit)
+			.filter((ticker) => ticker.timeframe === timeframe)
+			.filter((v, i, a) => {
+				return a.findIndex((t) => t.ticker === v.ticker) === i;
+			})
+			.slice(0, 7);
+	}
+
 	return {
 		securities,
 		leaderboard,
@@ -43,5 +53,6 @@ export const useSecuritiesStore = defineStore("securities", () => {
 		isLeaderboardFetched,
 		fetchSecurities,
 		fetchLeaderboard,
+		getSortedLeaderboard,
 	};
 });

@@ -82,7 +82,7 @@ const datasets = computed(() =>
 	</div>
 	<button
 		class="text-white"
-		:disabled="datasets.length === 0 || selectedLearningRate === null"
+		:disabled="datasets.length === 0 || selectedLearningRate === ''"
 		@click="
 			servicesStore.createNeuralLearningTask({
 				data_path: selectedDataSet.config.data_path,

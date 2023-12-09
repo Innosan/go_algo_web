@@ -1,24 +1,10 @@
 <script setup lang="ts">
-const securitiesStore = useSecuritiesStore();
+import LeaderBoard from "~/components/LeaderBoard.vue";
 </script>
 
 <template>
 	<div class="flex gap-14 flex-col">
-		<div class="flex flex-col gap-6">
-			<h2 class="font-black text-3xl">Наш выбор</h2>
-			<div class="flex gap-4 flex-wrap">
-				<LeaderCard
-					v-for="leader in securitiesStore.leaderboard
-						.filter((v, i, a) => {
-							return (
-								a.findIndex((t) => t.ticker === v.ticker) === i
-							);
-						})
-						.sort((a, b) => b.predict_profit - a.predict_profit)"
-					:leader="leader"
-				/>
-			</div>
-		</div>
+		<LeaderBoard />
 		<div class="flex flex-col gap-6">
 			<p class="text-3xl font-black">Сервисы</p>
 			<div class="flex gap-8 flex-wrap">
@@ -43,7 +29,7 @@ const securitiesStore = useSecuritiesStore();
 			<p class="text-3xl font-black">Разработчики</p>
 			<div class="flex flex-row gap-6 flex-wrap">
 				<DevCard
-					class="card border rounded-2xl p-5 gap-4 hover:translate-y-1"
+					class="border rounded-2xl p-5 gap-4"
 					v-for="dev in developers"
 					:dev="dev"
 				/>
@@ -54,7 +40,7 @@ const securitiesStore = useSecuritiesStore();
 
 <style scoped lang="scss">
 .card {
-	opacity: 0.7;
+	opacity: 1;
 	transition: 0.3s;
 
 	&:hover {

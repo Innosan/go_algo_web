@@ -78,7 +78,7 @@ const neuralNetworks = computed(() =>
 			title="Сеть для генерации"
 			v-if="neuralNetworks.length !== 0"
 			description="Здесь можно выбрать сеть для генерации. Выбрать можно только сеть, которая уже обучена."
-			:items="neuralNetworks.filter((neural) => neural.status === 3)"
+			:items="neuralNetworks.filter((neural) => neural.status === 2)"
 			@select="(selected) => onSelect('selectedNeuralNetwork', selected)"
 			display-key="id"
 		/>

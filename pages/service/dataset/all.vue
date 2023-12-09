@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { serviceFilename } from "~/types";
+import { serviceFilename, statuses } from "~/types";
 import { useTasksStore } from "~/stores/tasksStore";
 const tasksStore = useTasksStore();
 const datasets = computed(() =>
@@ -12,8 +12,18 @@ const datasets = computed(() =>
 		<p>Пока датасетов нет!</p>
 	</div>
 	<div v-else class="flex gap-7 flex-wrap">
-		<div v-for="dataset in datasets">
-			<p>{{ dataset.id }}</p>
+		<div
+			v-for="dataset in datasets"
+			class="card hover:border-b-red-400 transition-all flex gap-4 flex-col p-4 border-2 rounded-xl"
+		>
+			<CardHeading
+				:heading="'Датасет ' + dataset.id"
+				icon="ui/ic_dataset"
+			/>
+			<CardHeading
+				:heading="statuses[dataset.status].title"
+				:icon="statuses[dataset.status].icon"
+			/>
 		</div>
 	</div>
 </template>
