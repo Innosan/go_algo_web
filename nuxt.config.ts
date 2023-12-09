@@ -32,4 +32,7 @@ export default defineNuxtConfig({
 		"@pinia/nuxt",
 		"@formkit/auto-animate/nuxt",
 	],
+	build: {
+		transpile: ["tslib"],
+	},
 });
