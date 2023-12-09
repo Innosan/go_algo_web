@@ -8,7 +8,10 @@ const datasets = computed(() =>
 </script>
 
 <template>
-	<div class="flex gap-7 flex-wrap">
+	<div v-if="datasets.length === 0">
+		<p>Пока датасетов нет!</p>
+	</div>
+	<div v-else class="flex gap-7 flex-wrap">
 		<div v-for="dataset in datasets">
 			<p>{{ dataset.id }}</p>
 		</div>

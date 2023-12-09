@@ -11,12 +11,12 @@ const props = defineProps({
 		<div>
 			<CardHeading :heading="leader.ticker" icon="ui/ic_ticker" />
 			<CardHeading
-				:heading="leader.timeframe + ' дней'"
+				:heading="leader.timeframe + ' день'"
 				icon="ui/ic_timeframe"
 			/>
 		</div>
 		<div>
-			<p>{{ leader.predict_price }}</p>
+			<p>{{ leader.predict_price.toFixed(3) }}</p>
 			<p
 				:class="
 					leader.predict_profit < 0
@@ -28,8 +28,7 @@ const props = defineProps({
 					leader.predict_profit !== 0
 						? (leader.predict_profit * 100).toFixed(3)
 						: leader.predict_profit
-				}}
-				%
+				}}%
 			</p>
 		</div>
 	</div>

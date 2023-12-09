@@ -6,6 +6,7 @@ const securitiesStore = useSecuritiesStore();
 const selectedTicker = useSelectedTickerStore();
 const servicesStore = useServicesStore();
 const tasksStore = useTasksStore();
+
 const {
 	selectedMarkUp,
 	selectedBars,
@@ -16,10 +17,21 @@ const {
 	selectedNeuralNetwork,
 	onSelect,
 } = useSelectHandlers();
+
+const neuralNetworks = computed(() =>
+	tasksStore.getTasksByService(serviceFilename.NEURAL_LEARNING),
+);
 </script>
 
 <template>
 	<div class="flex flex-row flex-wrap gap-7">
+		<p
+			v-if="neuralNetworks.length === 0"
+			class="font-bold text-xl opacity-70"
+		>
+			Пока сетей нет, эта страница бесполезна. Но вы можете почитать
+			описания параметров!
+		</p>
 		<SelectTicker
 			title="Тикер"
 			:items="securitiesStore.securities"
@@ -62,13 +74,10 @@ const {
 			display-key="value"
 		/>
 		<Select
+			v-if="neuralNetworks.length !== 0"
 			title="Какую сеть тестируем"
 			description="Здесь можно выбрать сеть для тестирования. Выбрать можно только сеть, которая уже обучена."
-			:items="
-				tasksStore
-					.getTasksByService(serviceFilename.NEURAL_LEARNING)
-					.filter((neural) => neural.status === 3)
-			"
+			:items="neuralNetworks.filter((neural) => neural.status === 2)"
 			@select="(selected) => onSelect('selectedNeuralNetwork', selected)"
 			display-key="id"
 		/>
@@ -91,7 +100,8 @@ const {
 		:disabled="
 			!selectedStartDate ||
 			!selectedEndDate ||
-			!selectedTicker.ticker.secid
+			!selectedTicker.ticker.secid ||
+			neuralNetworks.length === 0
 		"
 		@click="
 			servicesStore.createBackTestTask({

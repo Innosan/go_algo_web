@@ -6,7 +6,7 @@ const securitiesStore = useSecuritiesStore();
 	<div class="flex gap-14 flex-col">
 		<div class="flex flex-col gap-6">
 			<h2 class="font-black text-3xl">Наш выбор</h2>
-			<div class="flex gap-2 flex-wrap">
+			<div class="flex gap-4 flex-wrap">
 				<LeaderCard
 					v-for="leader in securitiesStore.leaderboard
 						.filter((v, i, a) => {

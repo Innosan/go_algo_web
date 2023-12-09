@@ -15,10 +15,18 @@ const {
 	selectedCountDays,
 	onSelect,
 } = useSelectHandlers();
+
+const neuralNetworks = computed(() =>
+	tasksStore.getTasksByService(serviceFilename.NEURAL_LEARNING),
+);
 </script>
 
 <template>
 	<PageHeading icon="ui/ic_signals" title="Сигналы" />
+	<p v-if="neuralNetworks.length === 0" class="font-bold text-xl opacity-70">
+		Пока сетей нет, эта страница бесполезна. Но вы можете почитать описания
+		параметров!
+	</p>
 	<div class="flex flex-row flex-wrap gap-7">
 		<MultipleSelectTicker
 			title="Тикеры"
@@ -68,19 +76,16 @@ const {
 		/>
 		<Select
 			title="Сеть для генерации"
+			v-if="neuralNetworks.length !== 0"
 			description="Здесь можно выбрать сеть для генерации. Выбрать можно только сеть, которая уже обучена."
-			:items="
-				tasksStore
-					.getTasksByService(serviceFilename.NEURAL_LEARNING)
-					.filter((neural) => neural.status === 3)
-			"
+			:items="neuralNetworks.filter((neural) => neural.status === 3)"
 			@select="(selected) => onSelect('selectedNeuralNetwork', selected)"
 			display-key="id"
 		/>
 	</div>
 	<button
 		class="text-white"
-		:disabled="!selectedTicker.ticker[0]"
+		:disabled="!selectedTicker.ticker[0] || neuralNetworks.length === 0"
 		@click="
 			servicesStore.createSignalsTask({
 				ticker: selectedTicker.mapTickers(selectedTicker.ticker),

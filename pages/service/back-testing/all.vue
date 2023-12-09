@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { serviceFilename, statuses } from "~/types";
+import type { BackTestResult } from "~/types/backTestResult";
+
 import { useTasksStore } from "~/stores/tasksStore";
-import type { BackTestResult, isBuyHoldSharp } from "~/types/backTestResult";
-import { timeframeMapping } from "~/utils/parameters";
 const tasksStore = useTasksStore();
+
 const tests = computed(() =>
 	tasksStore.getTasksByService(serviceFilename.BACK_TESTING),
 );
@@ -24,7 +25,8 @@ function isBuyHoldSharp(obj: any) {
 </script>
 
 <template>
-	<div class="flex gap-7 flex-wrap">
+	<p v-if="tests.length === 0">Пока тестов нет!</p>
+	<div v-else class="flex gap-7 flex-wrap">
 		<div
 			class="card hover:border-b-red-400 transition-all flex gap-4 flex-col p-4 border-2 rounded-xl"
 			v-for="test in tests"
