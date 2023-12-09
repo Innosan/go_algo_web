@@ -11,6 +11,10 @@
 			/>
 			<p class="font-bold">{{ statuses[markup.status].title }}</p>
 		</div>
+		<CloseTaskButton
+			v-if="markup.status !== 2 && markup.status !== 3"
+			:task-id="markup.id"
+		/>
 		<button
 			class="text-white hover:border-red-300 transition-all"
 			:disabled="markup.status !== 2 || taskResult.profit_with_shift"
@@ -47,6 +51,7 @@
 <script setup lang="ts">
 import { statuses } from "~/types";
 import { timeframeMapping } from "~/utils/parameters";
+import CloseTaskButton from "~/components/utils/CloseTaskButton.vue";
 
 const tasksStore = useTasksStore();
 const taskResult = ref({});

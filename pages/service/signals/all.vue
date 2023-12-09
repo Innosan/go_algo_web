@@ -3,31 +3,31 @@ import { serviceFilename, statuses } from "~/types";
 import { useTasksStore } from "~/stores/tasksStore";
 import CloseTaskButton from "~/components/utils/CloseTaskButton.vue";
 const tasksStore = useTasksStore();
-const datasets = computed(() =>
-	tasksStore.getTasksByService(serviceFilename.DATASET_GENERATION),
+const signals = computed(() =>
+	tasksStore.getTasksByService(serviceFilename.SIGNALS),
 );
 </script>
 
 <template>
-	<div v-if="datasets.length === 0">
-		<p>Пока датасетов нет!</p>
+	<div v-if="signals.length === 0">
+		<p>Пока сигналов нет!</p>
 	</div>
 	<div v-else class="flex gap-7 flex-wrap">
 		<div
-			v-for="dataset in datasets"
+			v-for="signals in signals"
 			class="card hover:border-b-red-400 transition-all flex gap-4 flex-col p-4 border-2 rounded-xl"
 		>
 			<CardHeading
-				:heading="'Датасет ' + dataset.id"
-				icon="ui/ic_dataset"
+				:heading="'Сигнал ' + signals.id"
+				icon="ui/ic_signal"
 			/>
 			<CardHeading
-				:heading="statuses[dataset.status].title"
-				:icon="statuses[dataset.status].icon"
+				:heading="statuses[signals.status].title"
+				:icon="statuses[signals.status].icon"
 			/>
 			<CloseTaskButton
-				v-if="dataset.status !== 2 && dataset.status !== 3"
-				:task-id="dataset.id"
+				v-if="signal.status !== 2 && signal.status !== 3"
+				:task-id="signal.id"
 			/>
 		</div>
 	</div>

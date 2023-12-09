@@ -19,6 +19,20 @@ export const useTasksStore = defineStore("tasks", () => {
 		}
 	}
 
+	async function closeTask(taskId: number) {
+		const { data: closeTaskResult } = await useFetch(
+			runtimeConfig.public.apiRoot + "task/close",
+			{
+				params: {
+					task_id: taskId,
+				},
+			},
+		);
+
+		console.log(closeTaskResult.value);
+		await getAllTasks();
+	}
+
 	async function getTaskResult(taskId: number) {
 		const { data: taskResult } = await useFetch(
 			runtimeConfig.public.apiRoot + "task/result",
@@ -59,6 +73,7 @@ export const useTasksStore = defineStore("tasks", () => {
 		getAllTasks,
 		getTasksByService,
 		getTaskResult,
+		closeTask,
 		transformMarkUpChartData,
 		transformBackTestData,
 	};

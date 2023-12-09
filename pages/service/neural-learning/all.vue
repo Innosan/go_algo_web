@@ -3,31 +3,31 @@ import { serviceFilename, statuses } from "~/types";
 import { useTasksStore } from "~/stores/tasksStore";
 import CloseTaskButton from "~/components/utils/CloseTaskButton.vue";
 const tasksStore = useTasksStore();
-const datasets = computed(() =>
-	tasksStore.getTasksByService(serviceFilename.DATASET_GENERATION),
+const networks = computed(() =>
+	tasksStore.getTasksByService(serviceFilename.NEURAL_LEARNING),
 );
 </script>
 
 <template>
-	<div v-if="datasets.length === 0">
-		<p>Пока датасетов нет!</p>
+	<div v-if="networks.length === 0">
+		<p>Пока сетей нет!</p>
 	</div>
 	<div v-else class="flex gap-7 flex-wrap">
 		<div
-			v-for="dataset in datasets"
+			v-for="network in networks"
 			class="card hover:border-b-red-400 transition-all flex gap-4 flex-col p-4 border-2 rounded-xl"
 		>
 			<CardHeading
-				:heading="'Датасет ' + dataset.id"
-				icon="ui/ic_dataset"
+				:heading="'Сеть ' + network.id"
+				icon="ui/ic_neural_network"
 			/>
 			<CardHeading
-				:heading="statuses[dataset.status].title"
-				:icon="statuses[dataset.status].icon"
+				:heading="statuses[network.status].title"
+				:icon="statuses[network.status].icon"
 			/>
 			<CloseTaskButton
-				v-if="dataset.status !== 2 && dataset.status !== 3"
-				:task-id="dataset.id"
+				v-if="network.status !== 2 && network.status !== 3"
+				:task-id="network.id"
 			/>
 		</div>
 	</div>
