@@ -3,7 +3,7 @@
 	<div id="chartdiv"></div>
 </template>
 
-<script>
+<script lang="ts">
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import * as am5stock from "@amcharts/amcharts5/stock";
@@ -127,23 +127,6 @@ export default {
 				legendValueText: "[bold]{valueY.formatNumber('#,###.0a')}[/]",
 			}),
 		);
-
-		let trendSeries = mainPanel.series.push(
-			am5xy.LineSeries.new(root, {
-				name: "Trend Series",
-				xAxis: dateAxis,
-				yAxis: volumeValueAxis,
-				valueYField: "Date",
-				valueXField: "Trend",
-			}),
-		);
-
-		trendSeries.fills.template.setAll({
-			visible: true,
-			fillOpacity: 0.3,
-		});
-
-		stockChart.set("trendSeries", trendSeries);
 
 		volumeSeries.columns.template.setAll({
 			strokeOpacity: 0,
@@ -399,7 +382,6 @@ export default {
 		valueSeries.data.setAll(this.data);
 		volumeSeries.data.setAll(this.data);
 		sbSeries.data.setAll(this.data);
-		//trendSeries.data.setAll(this.data);
 
 		this.root = root;
 	},
