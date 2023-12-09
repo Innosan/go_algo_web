@@ -2,7 +2,7 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 	runtimeConfig: {
 		public: {
-			apiRoot: "http://213.171.14.97:8080/api/v1/",
+			apiRoot: "https://goalgoneuro.tw1.su/api/v1/",
 		},
 	},
 	css: [
