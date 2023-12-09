@@ -6,7 +6,7 @@ const props = defineProps({
 
 <template>
 	<div
-		class="flex flex-row gap-2 p-3 border-2 rounded-xl hover:border-b-red-400 transition-all"
+		class="flex card w-fit flex-row gap-2 p-3 border-2 rounded-xl hover:border-b-red-400 transition-all"
 	>
 		<div>
 			<CardHeading :heading="leader.ticker" icon="ui/ic_ticker" />

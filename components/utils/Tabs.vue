@@ -1,38 +1,43 @@
 <script setup>
 import { vAutoAnimate } from "@formkit/auto-animate";
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
+
+const props = defineProps({
+	firstTabTitle: String,
+	secondTabTitle: String,
+});
 </script>
 
 <template>
-	<TabGroup>
+	<TabGroup class="flex flex-col gap-4">
 		<TabList class="flex gap-4">
 			<Tab as="template" v-slot="{ selected }">
 				<button
 					:class="{
-						'bg-blue-500 text-white': selected,
-						'bg-white text-black': !selected,
+						'bg-red-600 text-white': selected,
+						'bg-red-100 text-black': !selected,
 					}"
 				>
-					Идеальная торговля
+					{{ firstTabTitle }}
 				</button>
 			</Tab>
 			<Tab as="template" v-slot="{ selected }">
 				<button
 					:class="{
-						'bg-blue-500 text-white': selected,
-						'bg-white text-black': !selected,
+						'bg-red-400 text-white': selected,
+						'bg-red-100 text-black': !selected,
 					}"
 				>
-					Нейронная торговля
+					{{ secondTabTitle }}
 				</button>
 			</Tab>
 		</TabList>
 		<TabPanels v-auto-animate>
 			<TabPanel key="tab1">
-				<slot name="ideal"></slot>
+				<slot name="tab1"></slot>
 			</TabPanel>
 			<TabPanel key="tab2">
-				<slot name="neural"></slot>
+				<slot name="tab2"></slot>
 			</TabPanel>
 		</TabPanels>
 	</TabGroup>

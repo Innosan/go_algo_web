@@ -82,8 +82,12 @@ function isBuyHoldSharp(obj: any) {
 					</Dialog>
 					<Dialog action="Графики">
 						<ClientOnly>
-							<Tabs>
-								<template #ideal>
+							<Tabs
+								as="div"
+								first-tab-title="Идеальная торговля"
+								second-tab-title="Нейронная торговля"
+							>
+								<template #tab1>
 									<XYChart
 										:data="
 											tasksStore.transformBackTestData(
@@ -96,7 +100,7 @@ function isBuyHoldSharp(obj: any) {
 									/>
 								</template>
 
-								<template #neural>
+								<template #tab2>
 									<XYChart
 										:data="
 											tasksStore.transformBackTestData(

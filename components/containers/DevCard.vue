@@ -5,9 +5,9 @@ const props = defineProps({
 </script>
 
 <template>
-	<div class="flex gap-4 max-w-screen-sm">
+	<div class="dev-card grid grid-cols-2 gap-2">
 		<img
-			class="w-44 h-44 object-cover rounded-2xl"
+			class="object-cover rounded-2xl w-40 h-40"
 			:src="dev.photo"
 			alt=""
 		/>
@@ -25,5 +25,9 @@ const props = defineProps({
 <style scoped>
 div {
 	opacity: 1 !important;
+}
+
+.dev-card {
+	width: 45%;
 }
 </style>
