@@ -23,6 +23,9 @@ dependencies:
   trading-vue-js:
     specifier: ^1.0.2
     version: 1.0.2
+  tslib:
+    specifier: ^2.6.2
+    version: 2.6.2
   vue3-toastify:
     specifier: ^0.1.14
     version: 0.1.14(vue@3.3.9)
