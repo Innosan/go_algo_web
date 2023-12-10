@@ -16,7 +16,7 @@ const {
 </script>
 
 <template>
-	<div class="flex flex-row flex-wrap gap-7">
+	<div class="select-container flex flex-row flex-wrap gap-7">
 		<SelectTicker
 			title="Тикер"
 			:items="securitiesStore.securities"
@@ -83,4 +83,7 @@ const {
 	</button>
 </template>
 
-<style scoped></style>
+<style scoped>
+.select-container {
+}
+</style>

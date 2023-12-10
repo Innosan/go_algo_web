@@ -13,4 +13,11 @@
 	</header>
 </template>
 
-<style scoped></style>
+<style scoped>
+header {
+	@media (max-width: 450px) {
+		flex-direction: column;
+		align-items: start;
+	}
+}
+</style>

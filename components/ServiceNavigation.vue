@@ -39,4 +39,11 @@ a {
 		opacity: 1;
 	}
 }
+
+@media (max-width: 800px) {
+	ul {
+		flex-wrap: wrap;
+		row-gap: 2rem;
+	}
+}
 </style>

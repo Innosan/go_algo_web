@@ -11,7 +11,7 @@ const securitiesStore = useSecuritiesStore();
 			second-tab-title="На 5 дней"
 		>
 			<template #tab1>
-				<div class="flex gap-4 flex-wrap">
+				<div class="flex gap-4 flex-wrap cards">
 					<LeaderCard
 						v-for="leader in securitiesStore.getSortedLeaderboard(
 							'1',
@@ -21,7 +21,7 @@ const securitiesStore = useSecuritiesStore();
 				</div>
 			</template>
 			<template #tab2>
-				<div class="flex gap-4 flex-wrap">
+				<div class="flex gap-4 flex-wrap cards">
 					<LeaderCard
 						v-for="leader in securitiesStore.getSortedLeaderboard(
 							'5',
@@ -33,3 +33,11 @@ const securitiesStore = useSecuritiesStore();
 		</Tabs>
 	</div>
 </template>
+<style scoped>
+.cards {
+	@media (max-width: 450px) {
+		flex-wrap: nowrap;
+		flex-direction: column;
+	}
+}
+</style>

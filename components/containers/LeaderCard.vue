@@ -34,4 +34,11 @@ const props = defineProps({
 	</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.card {
+	@media (max-width: 450px) {
+		width: -webkit-fill-available;
+		gap: 3rem;
+	}
+}
+</style>

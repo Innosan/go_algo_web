@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-	<div class="flex gap-4 items-center">
+	<div class="flex gap-4 items-center page-header">
 		<PageHeading icon="ui/ic_markup" title="Разметка" />
 		<NuxtLink to="/service/mark-up/all">Все разметки</NuxtLink>
 		<NuxtLink to="/service/mark-up/add-new">Добавить новую</NuxtLink>
