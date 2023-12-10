@@ -50,9 +50,10 @@ const validateYears = computed(() => {
 		/>
 		<Select
 			title="Размер дата-сета"
-			:items="maxDatasetSize"
+			:items="maxDatasetSize.list"
 			@select="(selected) => onSelect('selectedDatasetSize', selected)"
 			units="гб."
+			:description="maxDatasetSize.description"
 			display-key="value"
 		/>
 		<Select
@@ -70,12 +71,14 @@ const validateYears = computed(() => {
 			type="date"
 			@input="(selected) => onSelect('selectedStartDate', selected)"
 			title="Разметить с"
+			description="Дата начала получаемых для анализа данных."
 			id="start_date"
 		/>
 		<Input
 			type="date"
 			@input="(selected) => onSelect('selectedEndDate', selected)"
 			title="Разметить по"
+			description="Дата окончания получаемых для анализа данных"
 			id="end_date"
 		/>
 	</div>

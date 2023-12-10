@@ -89,7 +89,7 @@ export const markupParameters = {
 		},
 	],
 	description:
-		"Данный параметр показывает, что текущая точка экстремума является таковой для последующих, например, 6 точек",
+		"Параметр разметки тренда, показывает, что текущая точка экстремума является таковой для последующих, например, 6 точек.",
 };
 
 export const bars = {
@@ -107,7 +107,8 @@ export const bars = {
 			value: 40,
 		},
 	],
-	description: "Разметка баров начиная с точки экстремума. Например, 20.",
+	description:
+		"Число размечаемых в тренде баров как сигнальных к покупке или продаже.",
 };
 
 export const maxBars = {
@@ -125,77 +126,92 @@ export const maxBars = {
 			value: 80,
 		},
 	],
-	description:
-		"Вы можете настроить временной промежуток между барами\n" +
-		"на графе (1 день, 5 минут и т.д.)",
+	description: "Доля конца тренда, размеченная как сигнал к удержанию.",
 };
 
-export const maxDatasetSize = [
-	{
-		id: 1,
-		value: 0.5,
-	},
-	{
-		id: 2,
-		value: 1,
-	},
-	{
-		id: 3,
-		value: 2,
-	},
-];
+export const maxDatasetSize = {
+	list: [
+		{
+			id: 1,
+			value: 0.5,
+		},
+		{
+			id: 2,
+			value: 1,
+		},
+		{
+			id: 3,
+			value: 2,
+		},
+	],
+	description: "Размер генерируемого датасета в Гб.",
+};
 
-export const epochs = [
-	{
-		id: 0,
-		value: 10,
-	},
-	{
-		id: 1,
-		value: 250,
-	},
-	{
-		id: 2,
-		value: 500,
-	},
-	{
-		id: 3,
-		value: 1000,
-	},
-];
-export const stepsPerEpoch = [
-	{
-		id: 1,
-		value: 128,
-	},
-	{
-		id: 2,
-		value: 256,
-	},
-];
+export const epochs = {
+	list: [
+		{
+			id: 0,
+			value: 10,
+		},
+		{
+			id: 1,
+			value: 250,
+		},
+		{
+			id: 2,
+			value: 500,
+		},
+		{
+			id: 3,
+			value: 1000,
+		},
+	],
+	description:
+		"Cколько раз нейронная сеть прогоняет данные тренировочной выборки для обучения нейронной сети. Чем выше, тем лучше. Но дольше.",
+};
+export const stepsPerEpoch = {
+	list: [
+		{
+			id: 1,
+			value: 128,
+		},
+		{
+			id: 2,
+			value: 256,
+		},
+	],
+	description: "Число шагов на эпоху обучения.",
+};
 
-export const validationSteps = [
-	{
-		id: 1,
-		value: 128,
-	},
-	{
-		id: 2,
-		value: 256,
-	},
-];
+export const validationSteps = {
+	list: [
+		{
+			id: 1,
+			value: 128,
+		},
+		{
+			id: 2,
+			value: 256,
+		},
+	],
+	description: "Число шагов на валидацию.",
+};
 
-export const countDays = [
-	{
-		id: 1,
-		value: 90,
-	},
-	{
-		id: 2,
-		value: 180,
-	},
-	{
-		id: 2,
-		value: 360,
-	},
-];
+export const countDays = {
+	list: [
+		{
+			id: 1,
+			value: 90,
+		},
+		{
+			id: 2,
+			value: 180,
+		},
+		{
+			id: 2,
+			value: 360,
+		},
+	],
+	description:
+		"Количество дней с историческими данными, история для прогноза.",
+};
