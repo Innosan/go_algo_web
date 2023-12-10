@@ -15,7 +15,7 @@ export const services = [
 	},
 	{
 		icon: "ui/ic_neural_network",
-		link: "/service/neural-learning",
+		link: "/service/neural-learning/all",
 		title: "Обучение нейронных сетей",
 		description: "Мы обучаем нейронные сети для анализа финансовых данных.",
 	},
@@ -27,7 +27,7 @@ export const services = [
 			"Мы оцениваем доходность наших нейронных сетей, чтобы убедиться в их эффективности.",
 	},
 	{
-		link: "/service/signals",
+		link: "/service/signals/all",
 		icon: "ui/ic_signals",
 		title: "Генерация сигналов",
 		description:

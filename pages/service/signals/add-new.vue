@@ -51,7 +51,8 @@ const neuralNetworks = computed(() =>
 		/>
 		<Select
 			title="Количество дней"
-			:items="countDays"
+			:items="countDays.list"
+			:description="countDays.description"
 			@select="(selected) => onSelect('selectedCountDays', selected)"
 			display-key="value"
 		/>

@@ -15,6 +15,7 @@ const props = defineProps({
 	id: {
 		type: String,
 	},
+	description: String,
 });
 
 const value = ref("");
@@ -29,8 +30,9 @@ onMounted(() => {
 </script>
 
 <template>
-	<div class="flex flex-col gap-3">
+	<div class="flex flex-col gap-3 border-2 rounded-2xl p-4">
 		<label :for="id" class="text-2xl font-bold">{{ title }}</label>
+		<p class="opacity-60">{{ description }}</p>
 		<input
 			v-model="value"
 			@input="handleInput"

@@ -28,14 +28,16 @@ const datasets = computed(() =>
 	<div class="flex flex-row flex-wrap gap-7 select-container">
 		<Select
 			title="Число эпох"
-			:items="epochs"
+			:items="epochs.list"
+			:description="epochs.description"
 			@select="(selected) => onSelect('selectedEpochs', selected)"
 			units="шт."
 			display-key="value"
 		/>
 		<Select
 			title="Шаги за эпоху"
-			:items="stepsPerEpoch"
+			:items="stepsPerEpoch.list"
+			:description="epochs.description"
 			@select="(selected) => onSelect('selectedStepsPerEpoch', selected)"
 			units="шт."
 			display-key="value"
@@ -49,7 +51,8 @@ const datasets = computed(() =>
 		/>
 		<Select
 			title="Валидационные шаги"
-			:items="validationSteps"
+			:items="validationSteps.list"
+			:description="validationSteps.description"
 			@select="
 				(selected) => onSelect('selectedValidationSteps', selected)
 			"
@@ -60,6 +63,7 @@ const datasets = computed(() =>
 			v-if="datasets.length !== 0"
 			title="Дата-сет"
 			:items="datasets"
+			description="Дата-сет для обучения."
 			@select="(selected) => onSelect('selectedDataSet', selected)"
 			display-key="id"
 			:is-full-sized="true"
@@ -67,6 +71,7 @@ const datasets = computed(() =>
 		/>
 		<Input
 			type="number"
+			description="Скорость обучения сети."
 			@input="(selected) => onSelect('selectedLearningRate', selected)"
 			title="Скорость обучения"
 			id="learning_rate"
@@ -74,6 +79,7 @@ const datasets = computed(() =>
 		<Input
 			type="checkbox"
 			v-model:checked="selectedNewModelFlag"
+			description="Нажмите, если хотите обучить новую модель."
 			@input="(selected) => onSelect('selectedNewModelFlag', selected)"
 			title="Новая модель"
 			id="new_model_flag"

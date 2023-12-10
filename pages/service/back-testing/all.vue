@@ -29,18 +29,52 @@ function isBuyHoldSharp(obj: any) {
 	<p v-if="tests.length === 0">Пока тестов нет!</p>
 	<div v-else class="flex gap-7 flex-wrap">
 		<div
-			class="card hover:border-b-red-400 transition-all flex gap-4 flex-col p-4 border-2 rounded-xl"
+			class="card hover:border-b-red-400 transition-all flex gap-6 flex-col p-4 border-2 rounded-xl"
 			v-for="test in tests"
 		>
-			<CardHeading :heading="test.config.ticker" icon="ui/ic_ticker" />
-			<CardHeading
-				:heading="test.config.timeframe"
-				icon="ui/ic_timeframe"
-			/>
-			<CardHeading
-				:heading="statuses[test.status].title"
-				:icon="statuses[test.status].icon"
-			/>
+			<div class="flex gap-4">
+				<div class="border-r-2 pr-4 gap-3 flex flex-col">
+					<CardHeading
+						:heading="test.config.ticker"
+						icon="ui/ic_ticker"
+					/>
+					<CardHeading
+						:heading="statuses[test.status].title"
+						:icon="statuses[test.status].icon"
+					/>
+				</div>
+				<div class="flex flex-col gap-3">
+					<CardHeading
+						:heading="
+							formatDate(test.config.start_date) +
+							' - ' +
+							formatDate(test.config.end_date)
+						"
+						icon="ui/ic_date"
+						class="font-bold"
+					/>
+					<div class="flex gap-4">
+						<div>
+							<Tooltip :description="timeframes.description">
+								<p class="font-bold">Таймфрейм</p>
+								<p>{{ test.config.timeframe }}</p>
+							</Tooltip>
+						</div>
+						<div>
+							<Tooltip :description="maxBars.description">
+								<p class="font-bold">Максимум неотмечено</p>
+								<p>{{ test.config.max_unmark * 100 }} %</p>
+							</Tooltip>
+						</div>
+						<div>
+							<Tooltip :description="bars.description">
+								<p class="font-bold">Период разметки</p>
+								<p>{{ test.config.extr_bar_count }}</p>
+							</Tooltip>
+						</div>
+					</div>
+				</div>
+			</div>
 			<CloseTaskButton
 				v-if="test.status !== 2 && test.status !== 3"
 				:task-id="test.id"

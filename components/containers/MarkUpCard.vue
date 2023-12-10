@@ -3,13 +3,45 @@
 		class="border-2 card hover:border-b-red-400 transition-all rounded-xl p-4 flex flex-col gap-4"
 		v-auto-animate
 	>
-		<p class="font-bold text-2xl">{{ markup.config.ticker }}</p>
-		<div class="flex gap-2 items-center opacity-60">
-			<NuxtIcon
-				:name="statuses[markup.status].icon"
-				:alt="statuses[markup.status].title"
-			/>
-			<p class="font-bold">{{ statuses[markup.status].title }}</p>
+		<div class="flex gap-4">
+			<div class="border-r-2 pr-4 gap-3 flex flex-col">
+				<p class="font-bold text-2xl">{{ markup.config.ticker }}</p>
+				<CardHeading
+					:heading="statuses[markup.status].title"
+					:icon="statuses[markup.status].icon"
+				/>
+			</div>
+			<div class="flex flex-col gap-4">
+				<CardHeading
+					:heading="
+						formatDate(markup.config.start_date) +
+						' - ' +
+						formatDate(markup.config.end_date)
+					"
+					icon="ui/ic_date"
+					class="font-bold"
+				/>
+				<div class="flex flex-row gap-6">
+					<div>
+						<Tooltip :description="timeframes.description">
+							<p class="font-bold">Таймфрейм</p>
+							<p>{{ markup.config.timeframe }}</p>
+						</Tooltip>
+					</div>
+					<div>
+						<Tooltip :description="markupParameters.description">
+							<p class="font-bold">Параметр разметки</p>
+							<p>{{ markup.config.count_points }}</p>
+						</Tooltip>
+					</div>
+					<div>
+						<Tooltip :description="bars.description">
+							<p class="font-bold">Количество баров</p>
+							<p>{{ markup.config.extr_bar_count }}</p>
+						</Tooltip>
+					</div>
+				</div>
+			</div>
 		</div>
 		<CloseTaskButton
 			v-if="markup.status !== 2 && markup.status !== 3"
@@ -50,7 +82,7 @@
 </template>
 <script setup lang="ts">
 import { statuses } from "~/types";
-import { timeframeMapping } from "~/utils/parameters";
+import { bars, timeframeMapping } from "~/utils/parameters";
 import CloseTaskButton from "~/components/utils/CloseTaskButton.vue";
 
 const tasksStore = useTasksStore();

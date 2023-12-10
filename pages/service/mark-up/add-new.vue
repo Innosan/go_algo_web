@@ -72,7 +72,7 @@ const {
 			servicesStore.createMarkUpTask({
 				ticker: selectedTicker.ticker.secid,
 				timeframe: selectedTimeframe.timeframe,
-				markup: selectedMarkUp.value,
+				count_points: selectedMarkUp.value,
 				extr_bar_count: selectedBars.value,
 				start_date: selectedStartDate,
 				end_date: selectedEndDate,

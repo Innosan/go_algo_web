@@ -18,7 +18,7 @@ export const developers = [
 	},
 	{
 		name: "Ильяс Харисов",
-		role: "back-end",
+		role: "Back-end",
 		tags: ["", "", ""],
 		description:
 			'Резидент стартап студии "Структура", программист в лаборатории ФИЦ РАН СПИИРАН',
@@ -26,7 +26,7 @@ export const developers = [
 	},
 	{
 		name: "Даниил Вдовин",
-		role: "back-end",
+		role: "Back-end",
 		tags: ["", "", ""],
 		description:
 			"Бакалавр экономических наук, Ведущий программист отдела развития цифровых технологий в образовательных процессах, Главный специалист центра развития цифровых технологий.",
@@ -34,9 +34,10 @@ export const developers = [
 	},
 	{
 		name: "Михаил Фомин",
-		role: "front-end & design",
+		role: "Front-end & Design",
 		tags: ["", "", ""],
-		description: "Дизайнер и разработчик front-end и Android приложений.",
+		description:
+			"Дизайнер и разработчик front-end и Android приложений. Глава разработки в международной компании 스니지의 손",
 		photo: "/dev-photos/mikhail.png",
 	},
 ];
