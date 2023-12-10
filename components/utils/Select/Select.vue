@@ -130,6 +130,10 @@ onMounted(() => {
 
 .select {
 	width: 45%;
+
+	@media (max-width: 400px) {
+		width: -webkit-fill-available;
+	}
 }
 
 .full-size {

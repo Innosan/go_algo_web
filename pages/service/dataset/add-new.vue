@@ -24,7 +24,7 @@ const validateYears = computed(() => {
 </script>
 
 <template>
-	<div class="flex flex-row flex-wrap gap-7">
+	<div class="flex flex-row flex-wrap gap-7 select-container">
 		<Select
 			title="Параметр разметки"
 			:items="markupParameters.list"

@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-	<div class="flex gap-4 items-center">
+	<div class="flex gap-4 items-center page-header">
 		<PageHeading icon="ui/ic_dataset" title="Дата-сеты" />
 		<NuxtLink to="/service/dataset/all">Все дата-сеты</NuxtLink>
 		<NuxtLink to="/service/dataset/add-new">Добавить новый</NuxtLink>

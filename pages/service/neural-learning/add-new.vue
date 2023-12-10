@@ -25,7 +25,7 @@ const datasets = computed(() =>
 		Пока датасетов нет, эта страница бесполезна. Но вы можете почитать
 		описания параметров!
 	</p>
-	<div class="flex flex-row flex-wrap gap-7">
+	<div class="flex flex-row flex-wrap gap-7 select-container">
 		<Select
 			title="Число эпох"
 			:items="epochs"

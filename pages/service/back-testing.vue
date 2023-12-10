@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-	<div class="flex gap-4 items-center">
+	<div class="flex gap-4 items-center page-header">
 		<PageHeading icon="ui/ic_testing" title="Бэк-тесты" />
 		<NuxtLink to="/service/back-testing/all">Все тесты</NuxtLink>
 		<NuxtLink to="/service/back-testing/add-new">Добавить новый</NuxtLink>

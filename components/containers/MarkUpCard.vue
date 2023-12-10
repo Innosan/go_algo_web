@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="border-2 hover:border-b-red-400 transition-all rounded-xl p-4 flex flex-col gap-4"
+		class="border-2 card hover:border-b-red-400 transition-all rounded-xl p-4 flex flex-col gap-4"
 		v-auto-animate
 	>
 		<p class="font-bold text-2xl">{{ markup.config.ticker }}</p>
@@ -73,5 +73,11 @@ const props = defineProps({
 <style scoped>
 button {
 	color: #fff;
+}
+
+.card {
+	@media (max-width: 400px) {
+		width: -webkit-fill-available;
+	}
 }
 </style>

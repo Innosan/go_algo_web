@@ -26,7 +26,7 @@ const neuralNetworks = computed(() =>
 		Пока сетей нет, эта страница бесполезна. Но вы можете почитать описания
 		параметров!
 	</p>
-	<div class="flex flex-row flex-wrap gap-7">
+	<div class="flex flex-row flex-wrap gap-7 select-container">
 		<MultipleSelectTicker
 			title="Тикеры"
 			:items="securitiesStore.securities"
