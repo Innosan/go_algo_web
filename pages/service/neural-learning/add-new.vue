@@ -37,7 +37,7 @@ const datasets = computed(() =>
 		<Select
 			title="Шаги за эпоху"
 			:items="stepsPerEpoch.list"
-			:description="epochs.description"
+			:description="stepsPerEpoch.description"
 			@select="(selected) => onSelect('selectedStepsPerEpoch', selected)"
 			units="шт."
 			display-key="value"
@@ -71,7 +71,7 @@ const datasets = computed(() =>
 		/>
 		<Input
 			type="number"
-			description="Скорость обучения сети."
+			description="Скорость обучения сети. Например, 0.0001"
 			@input="(selected) => onSelect('selectedLearningRate', selected)"
 			title="Скорость обучения"
 			id="learning_rate"
