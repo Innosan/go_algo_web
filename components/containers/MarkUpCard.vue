@@ -5,7 +5,11 @@
 	>
 		<div class="flex gap-4">
 			<div class="border-r-2 pr-4 gap-3 flex flex-col">
-				<p class="font-bold text-2xl">{{ markup.config.ticker }}</p>
+				<CardHeading
+					:heading="markup.config.ticker"
+					icon="ui/ic_ticker"
+				/>
+				<p class="font-bold text-xl">{{}}</p>
 				<CardHeading
 					:heading="statuses[markup.status].title"
 					:icon="statuses[markup.status].icon"
