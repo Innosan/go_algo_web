@@ -4,7 +4,8 @@ import type { Security } from "~/types";
 export const useSecuritiesStore = defineStore("securities", () => {
 	const runtimeConfig = useRuntimeConfig();
 	const securities = ref<Security[]>([]);
-	const leaderboard = ref([]);
+	const dayLeaderboard = ref([]);
+	const fiveDayLeaderboard = ref([]);
 
 	const isSecuritiesFetched = ref(false);
 	const isLeaderboardFetched = ref(false);
@@ -25,34 +26,54 @@ export const useSecuritiesStore = defineStore("securities", () => {
 		}
 	}
 
-	async function fetchLeaderboard() {
-		if (!isLeaderboardFetched.value) {
-			const { data: leaderboardData } = await useFetch(
-				runtimeConfig.public.apiRoot + "leaderboard",
-			);
+	async function fetchDayLeaderboard() {
+		const { data: leaderboardData } = await useFetch(
+			runtimeConfig.public.apiRoot + "leaderboard/byTimeFrame",
+			{
+				params: {
+					tf: 1,
+				},
+			},
+		);
 
-			leaderboard.value = leaderboardData.value;
-			isLeaderboardFetched.value = true;
-		}
+		dayLeaderboard.value = leaderboardData.value;
 	}
 
-	function getSortedLeaderboard(timeframe) {
-		return leaderboard.value
+	async function fetchFiveDayLeaderboard() {
+		const { data: leaderboardData } = await useFetch(
+			runtimeConfig.public.apiRoot + "leaderboard/byTimeFrame",
+			{
+				params: {
+					tf: 5,
+				},
+			},
+		);
+
+		fiveDayLeaderboard.value = leaderboardData.value;
+	}
+
+	function getDaySortedLeaderboard() {
+		return dayLeaderboard.value
 			.sort((a, b) => b.predict_profit - a.predict_profit)
-			.filter((ticker) => ticker.timeframe === timeframe)
-			.filter((v, i, a) => {
-				return a.findIndex((t) => t.ticker === v.ticker) === i;
-			})
+			.slice(0, 7);
+	}
+
+	function getFiveDaySortedLeaderboard() {
+		return fiveDayLeaderboard.value
+			.sort((a, b) => b.predict_profit - a.predict_profit)
 			.slice(0, 7);
 	}
 
 	return {
 		securities,
-		leaderboard,
+		dayLeaderboard,
+		fiveDayLeaderboard,
 		isFetched: isSecuritiesFetched,
 		isLeaderboardFetched,
 		fetchSecurities,
-		fetchLeaderboard,
-		getSortedLeaderboard,
+		fetchDayLeaderboard,
+		fetchFiveDayLeaderboard,
+		getFiveDaySortedLeaderboard,
+		getDaySortedLeaderboard,
 	};
 });
