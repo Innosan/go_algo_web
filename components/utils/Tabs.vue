@@ -14,8 +14,8 @@ const props = defineProps({
 			<Tab as="template" v-slot="{ selected }">
 				<button
 					:class="{
-						'bg-red-600 text-white': selected,
-						'bg-red-100 text-black': !selected,
+						'bg-green-600 text-white': selected,
+						'bg-green-100 text-black': !selected,
 					}"
 				>
 					{{ firstTabTitle }}
@@ -24,8 +24,8 @@ const props = defineProps({
 			<Tab as="template" v-slot="{ selected }">
 				<button
 					:class="{
-						'bg-red-400 text-white': selected,
-						'bg-red-100 text-black': !selected,
+						'bg-green-400 text-white': selected,
+						'bg-green-100 text-black': !selected,
 					}"
 				>
 					{{ secondTabTitle }}
