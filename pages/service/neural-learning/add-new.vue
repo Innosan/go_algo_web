@@ -66,8 +66,6 @@ const datasets = computed(() =>
 			description="Дата-сет для обучения."
 			@select="(selected) => onSelect('selectedDataSet', selected)"
 			display-key="id"
-			:is-full-sized="true"
-			display-full-size-key="config"
 		/>
 		<Input
 			type="number"
